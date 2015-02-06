@@ -8,12 +8,32 @@
 
 import UIKit
 
-class ProfileVC: UIViewController {
-
+class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    var imagePicker = UIImagePickerController()
+    
+    @IBOutlet weak var profileImg: UIImageView!
+    
+    @IBAction func setProfileImage(){
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
+            println("Button capture")
+            
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        setImgProp()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +41,14 @@ class ProfileVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    func setImgProp(){
+        self.profileImg.layer.cornerRadius = self.profileImg.frame.size.width / 2
+        self.profileImg.clipsToBounds = true
+        self.profileImg.layer.borderWidth = 3
+        self.profileImg.layer.borderColor = UIColor.whiteColor().CGColor
+    }
+    
     /*
     // MARK: - Navigation
 
