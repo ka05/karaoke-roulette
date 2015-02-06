@@ -70,6 +70,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		089FF79F1A857FA9001FBE6E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		18C73FC31A855EF800B7C1A7 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +98,7 @@
 		18C73FCE1A855EF800B7C1A7 /* KaraokeRoulette */ = {
 			isa = PBXGroup;
 			children = (
+				089FF79F1A857FA9001FBE6E /* Controllers */,
 				18C73FF91A8567BE00B7C1A7 /* Singletons */,
 				18C73FF61A8567A100B7C1A7 /* Views */,
 				18C73FF71A8567AC00B7C1A7 /* Models */,
@@ -465,6 +473,7 @@
 				18C73FF01A855EF900B7C1A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18C73FF11A855EF900B7C1A7 /* Build configuration list for PBXNativeTarget "KaraokeRouletteTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +482,7 @@
 				18C73FF31A855EF900B7C1A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
