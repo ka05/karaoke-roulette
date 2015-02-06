@@ -14,6 +14,12 @@
 		18C73FDC1A855EF800B7C1A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FDB1A855EF800B7C1A7 /* Images.xcassets */; };
 		18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FDD1A855EF800B7C1A7 /* LaunchScreen.xib */; };
 		18C73FEB1A855EF900B7C1A7 /* KaraokeRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FEA1A855EF900B7C1A7 /* KaraokeRouletteTests.swift */; };
+		18C73FF51A85634E00B7C1A7 /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FF41A85634E00B7C1A7 /* Navigation.xib */; };
+		18C73FFB1A8567F100B7C1A7 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */; };
+		18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */; };
+		18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */; };
+		18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C740001A856A4700B7C1A7 /* SongsTableVC.swift */; };
+		18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C740021A856AB300B7C1A7 /* AboutVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		18C73FE41A855EF900B7C1A7 /* KaraokeRouletteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaraokeRouletteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FE91A855EF900B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FEA1A855EF900B7C1A7 /* KaraokeRouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeRouletteTests.swift; sourceTree = "<group>"; };
+		18C73FF41A85634E00B7C1A7 /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Navigation.xib; sourceTree = "<group>"; };
+		18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
+		18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
+		18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		18C740001A856A4700B7C1A7 /* SongsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableVC.swift; sourceTree = "<group>"; };
+		18C740021A856AB300B7C1A7 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,11 +91,16 @@
 		18C73FCE1A855EF800B7C1A7 /* KaraokeRoulette */ = {
 			isa = PBXGroup;
 			children = (
-				18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */,
+				18C73FF91A8567BE00B7C1A7 /* Singletons */,
+				18C73FF61A8567A100B7C1A7 /* Views */,
+				18C73FF71A8567AC00B7C1A7 /* Models */,
+				18C73FF81A8567B400B7C1A7 /* ViewControllers */,
 				18C73FD61A855EF800B7C1A7 /* ViewController.swift */,
+				18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */,
 				18C73FD81A855EF800B7C1A7 /* Main.storyboard */,
 				18C73FDB1A855EF800B7C1A7 /* Images.xcassets */,
 				18C73FDD1A855EF800B7C1A7 /* LaunchScreen.xib */,
+				18C73FF41A85634E00B7C1A7 /* Navigation.xib */,
 				18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */,
 				18C73FCF1A855EF800B7C1A7 /* Supporting Files */,
 			);
@@ -113,6 +130,39 @@
 				18C73FE91A855EF900B7C1A7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18C73FF61A8567A100B7C1A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		18C73FF71A8567AC00B7C1A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		18C73FF81A8567B400B7C1A7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */,
+				18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */,
+				18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */,
+				18C740001A856A4700B7C1A7 /* SongsTableVC.swift */,
+				18C740021A856AB300B7C1A7 /* AboutVC.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		18C73FF91A8567BE00B7C1A7 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Singletons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +248,7 @@
 				18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */,
 				18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */,
 				18C73FDC1A855EF800B7C1A7 /* Images.xcassets in Resources */,
+				18C73FF51A85634E00B7C1A7 /* Navigation.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +266,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
+				18C73FFB1A8567F100B7C1A7 /* LandingVC.swift in Sources */,
+				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
+				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
 				18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */,
+				18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
