@@ -10,14 +10,20 @@
 
 import UIKit
 
-@IBDesignable class Navigation: UIView {
+@IBDesignable class Navigation: UIView{
 
     var view: UIView!
     
-    @IBAction func songsLink(sender: UIButton) {
-        var songsTableVC = SongsTableVC()
+    @IBOutlet weak var profileVC: ProfileVC!
+    
+    @IBAction func songsLink(sender: AnyObject) {
+        println("THIS SHOULD PRINT")
+        //self.delegate.pushViewControllerUsinDelegate(songsTableVC)
+        profileVC.performSegueWithIdentifier("profileToSongs", sender: SongsTableVC())
+        println("THIS SHOULD PRINT")
         
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
