@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let profileVC = mainStoryboard.instantiateViewControllerWithIdentifier(NSString:"ProfileVC") as ProfileVC
 //        self.navigationController.pushViewController(profileVC, animated: true)
         
+        
+        
         return true
     }
 
