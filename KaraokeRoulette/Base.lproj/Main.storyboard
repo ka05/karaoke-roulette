@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jVN-TX-mkS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Eg1-gb-SHa">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -36,6 +36,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.1553648561" green="0.49057343599999997" blue="0.53967773910000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <gestureRecognizers/>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Ppi-Aj-S86" detailTextLabel="ksw-Af-KaG" style="IBUITableViewCellStyleSubtitle" id="a75-ab-hz8">
@@ -108,7 +109,7 @@
         <!--ProfileVC-->
         <scene sceneID="Rzn-cB-OMo">
             <objects>
-                <viewController id="Eg1-gb-SHa" customClass="ProfileVC" sceneMemberID="viewController">
+                <viewController id="Eg1-gb-SHa" customClass="ProfileVC" customModule="KaraokeRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wPz-5n-rxQ"/>
                         <viewControllerLayoutGuide type="bottom" id="Itf-N2-fSj"/>
@@ -123,7 +124,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="# songs unlocked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtC-Q1-o3Y">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="# songs unlocked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtC-Q1-o3Y">
                                 <rect key="frame" x="16" y="303" width="568" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="gec-kL-Xrd"/>
@@ -131,13 +132,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="gec-kL-Xrd"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E7a-v3-2W2">
-                                <rect key="frame" x="0.0" y="332" width="600" height="268"/>
+                                <rect key="frame" x="5" y="332" width="600" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFo-T4-q8K">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFo-T4-q8K">
                                 <rect key="frame" x="258" y="218" width="84" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="1Vg-Hp-TOx"/>
+                                </constraints>
                                 <state key="normal" title="Take Picture">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -145,37 +154,78 @@
                                     <action selector="setProfileImage" destination="Eg1-gb-SHa" eventType="touchUpInside" id="xOJ-Ag-4gC"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-Kb-Zub">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qE-Ha-8B9" customClass="Navigation" customModule="KaraokeRoulette" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="jza-b0-Hke"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4Re-oF-8iP" appends="YES" id="1V6-Je-IXL"/>
+                                </connections>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7RQ-Kb-Zub">
                                 <rect key="frame" x="240" y="128" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7RQ-Kb-Zub" secondAttribute="height" multiplier="213:157" id="5bY-0m-lZG"/>
+                                    <constraint firstAttribute="width" constant="120" id="KfE-rt-nFH"/>
+                                    <constraint firstAttribute="height" constant="120" id="OjI-8v-lvN"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5bY-0m-lZG"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="7RQ-Kb-Zub" secondAttribute="centerX" id="592-Ib-Tqa"/>
                             <constraint firstItem="7RQ-Kb-Zub" firstAttribute="top" secondItem="wPz-5n-rxQ" secondAttribute="bottom" constant="130" id="7hg-bQ-Vxp"/>
                             <constraint firstItem="7RQ-Kb-Zub" firstAttribute="centerX" secondItem="Mi1-3j-w2I" secondAttribute="centerX" id="DOy-sX-GqL"/>
                             <constraint firstAttribute="centerY" secondItem="7RQ-Kb-Zub" secondAttribute="centerY" id="EhZ-fQ-R0g"/>
+                            <constraint firstItem="7RQ-Kb-Zub" firstAttribute="centerX" secondItem="BFo-T4-q8K" secondAttribute="centerX" id="KBh-pg-w0k"/>
                             <constraint firstItem="7RQ-Kb-Zub" firstAttribute="centerX" secondItem="NtC-Q1-o3Y" secondAttribute="centerX" id="P2h-le-hV6"/>
                             <constraint firstItem="NtC-Q1-o3Y" firstAttribute="top" secondItem="vHS-wp-1oK" secondAttribute="bottom" constant="8" symbolic="YES" id="Pqf-G2-ptN"/>
+                            <constraint firstItem="7qE-Ha-8B9" firstAttribute="top" secondItem="Mi1-3j-w2I" secondAttribute="topMargin" id="RuI-J0-drX"/>
+                            <constraint firstItem="BFo-T4-q8K" firstAttribute="top" secondItem="Mi1-3j-w2I" secondAttribute="top" constant="218" id="Ue7-dB-nGJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7qE-Ha-8B9" secondAttribute="trailing" constant="-16" id="VsT-H9-VKV"/>
+                            <constraint firstItem="7qE-Ha-8B9" firstAttribute="leading" secondItem="Mi1-3j-w2I" secondAttribute="leadingMargin" constant="-16" id="W7e-AF-R3k"/>
+                            <constraint firstAttribute="centerX" secondItem="7RQ-Kb-Zub" secondAttribute="centerX" id="WjJ-7t-h8J"/>
+                            <constraint firstItem="vHS-wp-1oK" firstAttribute="top" secondItem="BFo-T4-q8K" secondAttribute="bottom" constant="8" symbolic="YES" id="Ybd-xR-x3R"/>
+                            <constraint firstItem="7RQ-Kb-Zub" firstAttribute="top" secondItem="Mi1-3j-w2I" secondAttribute="topMargin" constant="128" id="Z2B-pu-oJ0"/>
                             <constraint firstItem="Itf-N2-fSj" firstAttribute="top" secondItem="NtC-Q1-o3Y" secondAttribute="bottom" constant="224" id="cVj-Ng-eOW"/>
+                            <constraint firstItem="7RQ-Kb-Zub" firstAttribute="top" secondItem="7qE-Ha-8B9" secondAttribute="bottom" constant="57" id="dct-0Z-gDV"/>
                             <constraint firstItem="vHS-wp-1oK" firstAttribute="top" secondItem="7RQ-Kb-Zub" secondAttribute="bottom" constant="8" symbolic="YES" id="hBI-2u-Pgu"/>
                             <constraint firstItem="7RQ-Kb-Zub" firstAttribute="centerX" secondItem="vHS-wp-1oK" secondAttribute="centerX" id="jP5-yq-X1w"/>
+                            <constraint firstItem="Itf-N2-fSj" firstAttribute="top" secondItem="7qE-Ha-8B9" secondAttribute="bottom" constant="529" id="oAf-Oy-2vj"/>
                             <constraint firstItem="NtC-Q1-o3Y" firstAttribute="leading" secondItem="vHS-wp-1oK" secondAttribute="leading" id="q4t-4h-mJx"/>
+                            <constraint firstAttribute="centerX" secondItem="7RQ-Kb-Zub" secondAttribute="centerX" id="r2h-EA-4HX"/>
                             <constraint firstItem="NtC-Q1-o3Y" firstAttribute="leading" secondItem="Mi1-3j-w2I" secondAttribute="leadingMargin" id="u8F-JF-FeB"/>
+                            <constraint firstAttribute="centerX" secondItem="7RQ-Kb-Zub" secondAttribute="centerX" id="uwA-0z-QJq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="7hg-bQ-Vxp"/>
+                                <exclude reference="EhZ-fQ-R0g"/>
+                                <exclude reference="dct-0Z-gDV"/>
+                                <exclude reference="oAf-Oy-2vj"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="profileImg" destination="7RQ-Kb-Zub" id="06n-s8-tzl"/>
+                        <outlet property="nav" destination="7qE-Ha-8B9" id="mab-Xq-rGW"/>
+                        <outlet property="navHeight" destination="jza-b0-Hke" id="A58-ko-G8o"/>
+                        <outlet property="profileImageView" destination="7RQ-Kb-Zub" id="YBu-fd-0nW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxL-EA-oe0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="4Re-oF-8iP">
+                    <connections>
+                        <action selector="toggleNav:" destination="Eg1-gb-SHa" id="WHb-2w-4Pf"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-41" y="-1415"/>
         </scene>

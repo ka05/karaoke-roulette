@@ -40,6 +40,7 @@
                     </state>
                     <connections>
                         <action selector="pushVC" destination="gR0-xU-8Uh" eventType="touchUpInside" id="uhc-k8-sCt"/>
+                        <action selector="songsLink:" destination="-1" eventType="touchUpInside" id="8gt-03-Lxn"/>
                     </connections>
                 </button>
             </subviews>
