@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="UserInfo" syncable="YES">
+    <entity name="Artist" syncable="YES">
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artistID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="song" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Genre" syncable="YES">
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="genreID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="song" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Song" syncable="YES">
+        <attribute name="artistID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="genreID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="songID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="songTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" syncable="YES"/>
+        <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Genre" syncable="YES"/>
+        <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
+    </entity>
+    <entity name="User" syncable="YES">
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" syncable="YES"/>
+        <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
+    </entity>
+    <entity name="Video" syncable="YES">
+        <attribute name="creationDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="localID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="songID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="videoID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="videoName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserInfo" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="User" positionX="-117" positionY="-126" width="128" height="103"/>
+        <element name="Song" positionX="-317" positionY="108" width="128" height="163"/>
+        <element name="Genre" positionX="-479" positionY="306" width="128" height="88"/>
+        <element name="Artist" positionX="-162" positionY="297" width="128" height="88"/>
+        <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
     </elements>
 </model>
