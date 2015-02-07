@@ -18,6 +18,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var captureDevice:AVCaptureDevice?
     var audioPlayer:AVAudioPlayer?
     var player:AVPlayer?
+    var countdown:Int!
    
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var textView: UIView!
@@ -110,6 +111,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func beginCountdown() {
+        countdown = 5
         startRecording()
     }
     
