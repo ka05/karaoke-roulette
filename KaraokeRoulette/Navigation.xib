@@ -4,35 +4,35 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Navigation" customModule="KaraokeRoulette" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="gR0-xU-8Uh" customClass="NavView" customModule="KaraokeRoulette" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="NavView" id="gR0-xU-8Uh">
             <rect key="frame" x="0.0" y="0.0" width="607" height="283"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-Eu-Iye">
-                    <rect key="frame" x="8" y="70" width="584" height="32"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nug-Eu-Iye">
+                    <rect key="frame" x="271" y="68" width="66" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfz-0S-R7c">
-                    <rect key="frame" x="8" y="150" width="584" height="32"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfz-0S-R7c">
+                    <rect key="frame" x="272" y="156" width="64" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX0-KW-ssW">
-                    <rect key="frame" x="8" y="110" width="584" height="32"/>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX0-KW-ssW">
+                    <rect key="frame" x="265" y="112" width="78" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="roulette_nav.png" translatesAutoresizingMaskIntoConstraints="NO" id="IXn-Vx-Z0P">
-                    <rect key="frame" x="152" y="208" width="297" height="67"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roulette_nav.png" translatesAutoresizingMaskIntoConstraints="NO" id="IXn-Vx-Z0P">
+                    <rect key="frame" x="220" y="235" width="167" height="38"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKF-Ev-ebi">
-                    <rect key="frame" x="8" y="21" width="591" height="41"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKF-Ev-ebi">
+                    <rect key="frame" x="270" y="12" width="68" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Songs">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,6 +44,19 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.094117647058823528" green="0.75686274509803919" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="IXn-Vx-Z0P" secondAttribute="bottom" constant="10" id="2xe-Va-EVB"/>
+                <constraint firstItem="cX0-KW-ssW" firstAttribute="top" secondItem="nug-Eu-Iye" secondAttribute="bottom" constant="15" id="3X5-rS-kdI"/>
+                <constraint firstAttribute="centerX" secondItem="cX0-KW-ssW" secondAttribute="centerX" id="4Mg-dI-Thf"/>
+                <constraint firstAttribute="centerX" secondItem="Cfz-0S-R7c" secondAttribute="centerX" id="Hgh-fc-jsj"/>
+                <constraint firstItem="IXn-Vx-Z0P" firstAttribute="top" secondItem="Cfz-0S-R7c" secondAttribute="bottom" constant="50" id="SZu-Fq-cjc"/>
+                <constraint firstAttribute="centerX" secondItem="nug-Eu-Iye" secondAttribute="centerX" id="WVh-tW-hbB"/>
+                <constraint firstItem="nug-Eu-Iye" firstAttribute="top" secondItem="mKF-Ev-ebi" secondAttribute="bottom" constant="15" id="X34-rQ-19Z"/>
+                <constraint firstAttribute="centerX" secondItem="mKF-Ev-ebi" secondAttribute="centerX" id="byb-xO-OKD"/>
+                <constraint firstItem="Cfz-0S-R7c" firstAttribute="top" secondItem="cX0-KW-ssW" secondAttribute="bottom" constant="15" id="jad-Kg-BAA"/>
+                <constraint firstAttribute="centerX" secondItem="IXn-Vx-Z0P" secondAttribute="centerX" id="lTI-nc-war"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="444.5" y="-169.5"/>
         </view>

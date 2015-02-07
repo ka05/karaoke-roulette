@@ -7,8 +7,6 @@
 //
 
 import UIKit
-let profileVC = ProfileVC()
-let songsTableVC = SongsTableVC()
 
 class NavView: UIView {
     

@@ -34,6 +34,7 @@ class SongTimer : NSObject {
         self.countMark = 0.6
         self.countSpace = self.countMark
         self.index = 0
+        self.countdown = 5
     }
     
     // Starts the timing function
@@ -79,4 +80,7 @@ class SongTimer : NSObject {
     }
     
     // func stopTimer
+    func stopTimer() {
+        timer.invalidate()
+    }
 }

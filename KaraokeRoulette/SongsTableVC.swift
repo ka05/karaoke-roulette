@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Foundation
 
 class SongsTableVC: UITableViewController {
-
+    @IBOutlet weak var nav: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

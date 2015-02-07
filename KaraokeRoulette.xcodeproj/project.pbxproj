@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
 		089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A21A858181001FBE6E /* SongTimer.swift */; };
+		089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A41A85A1E6001FBE6E /* Navigation.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
 		18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD61A855EF800B7C1A7 /* ViewController.swift */; };
@@ -17,7 +18,6 @@
 		18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FDD1A855EF800B7C1A7 /* LaunchScreen.xib */; };
 		18C73FEB1A855EF900B7C1A7 /* KaraokeRouletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FEA1A855EF900B7C1A7 /* KaraokeRouletteTests.swift */; };
 		18C73FF51A85634E00B7C1A7 /* Navigation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FF41A85634E00B7C1A7 /* Navigation.xib */; };
-		18C73FFB1A8567F100B7C1A7 /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */; };
 		18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */; };
 		18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */; };
 		18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C740001A856A4700B7C1A7 /* SongsTableVC.swift */; };
@@ -25,7 +25,6 @@
 		18C740051A85770700B7C1A7 /* roulette_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C740041A85770700B7C1A7 /* roulette_nav.png */; };
 		18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */ = {isa = PBXBuildFile; fileRef = 18C740061A85861000B7C1A7 /* roulette_main.svg */; };
 		18C740091A85861000B7C1A7 /* roulette_nav.svg in Resources */ = {isa = PBXBuildFile; fileRef = 18C740071A85861000B7C1A7 /* roulette_nav.svg */; };
-		18C7400B1A8589E200B7C1A7 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C7400A1A8589E200B7C1A7 /* NavView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +40,7 @@
 /* Begin PBXFileReference section */
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
 		089FF7A21A858181001FBE6E /* SongTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTimer.swift; sourceTree = "<group>"; };
+		089FF7A41A85A1E6001FBE6E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		18C73FCC1A855EF800B7C1A7 /* KaraokeRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaraokeRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +53,6 @@
 		18C73FE91A855EF900B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FEA1A855EF900B7C1A7 /* KaraokeRouletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaraokeRouletteTests.swift; sourceTree = "<group>"; };
 		18C73FF41A85634E00B7C1A7 /* Navigation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Navigation.xib; sourceTree = "<group>"; };
-		18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
 		18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		18C740001A856A4700B7C1A7 /* SongsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableVC.swift; sourceTree = "<group>"; };
@@ -61,7 +60,6 @@
 		18C740041A85770700B7C1A7 /* roulette_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roulette_nav.png; sourceTree = "<group>"; };
 		18C740061A85861000B7C1A7 /* roulette_main.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roulette_main.svg; sourceTree = "<group>"; };
 		18C740071A85861000B7C1A7 /* roulette_nav.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roulette_nav.svg; sourceTree = "<group>"; };
-		18C7400A1A8589E200B7C1A7 /* NavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +158,7 @@
 		18C73FF61A8567A100B7C1A7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18C7400A1A8589E200B7C1A7 /* NavView.swift */,
+				089FF7A41A85A1E6001FBE6E /* Navigation.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				18C73FFC1A85683F00B7C1A7 /* FriendsVC.swift */,
-				18C73FFA1A8567F100B7C1A7 /* LandingVC.swift */,
 				18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */,
 				18C740001A856A4700B7C1A7 /* SongsTableVC.swift */,
 				18C740021A856AB300B7C1A7 /* AboutVC.swift */,
@@ -296,12 +293,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
-				18C73FFB1A8567F100B7C1A7 /* LandingVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
+				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
 				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
-				18C7400B1A8589E200B7C1A7 /* NavView.swift in Sources */,
 				18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
