@@ -8,11 +8,6 @@
 
 import Foundation
 
-let countdownNotificationKey = "com.KaraokeRoulette.countdown"
-let countdownStopNotificationKey = "com.KaraokeRoulette.countdownStop"
-let startTransitionNotificationKey = "com.KaraokeRoulette.startTransition"
-let lineChangeNotificationKey = "com.KaraokeRoulette.lineChange"
-
 class SongTimer : NSObject {
     let times:[Double]
     let length:Double
@@ -37,6 +32,21 @@ class SongTimer : NSObject {
         self.countdown = 5
     }
     
+    // called when deinit
+    deinit {
+        removeSongStartObserver()
+    }
+    
+    // adds the observer for song start
+    func addSongStartObserver() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startSongTiming", name: "com.KaraokeRoulette.songStart", object: nil)
+    }
+    
+    // remove the observer for song start
+    func removeSongStartObserver() {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     // Starts the timing function
     func startTiming() {
         let sel:Selector = "updateTime"
@@ -58,6 +68,7 @@ class SongTimer : NSObject {
     // Performs the countdown operation
     func performCountdown() {
         if firstCount {
+            self.addSongStartObserver()
             NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
         } else {
             countdown--
@@ -65,10 +76,17 @@ class SongTimer : NSObject {
             NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
             
             // countdown is over
-            if countdown == 1 {
+            if countdown == 0 {
                 NSNotificationCenter.defaultCenter().postNotificationName(countdownStopNotificationKey, object: self)
+                stopTimer()
             }
         }
+    }
+    
+    // starts the song timing
+    func startSongTiming() {
+        self.started = true
+        startTiming()
     }
     
     // checks the time

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */; };
+		083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190B21A85B5E8004B9A25 /* KaraokeVC.swift */; };
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
 		089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A21A858181001FBE6E /* SongTimer.swift */; };
 		089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A41A85A1E6001FBE6E /* Navigation.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGlobals.swift; sourceTree = "<group>"; };
+		083190B21A85B5E8004B9A25 /* KaraokeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaraokeVC.swift; sourceTree = "<group>"; };
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
 		089FF7A21A858181001FBE6E /* SongTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTimer.swift; sourceTree = "<group>"; };
 		089FF7A41A85A1E6001FBE6E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -80,6 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		083190AC1A85ACD7004B9A25 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				089FF7A41A85A1E6001FBE6E /* Navigation.swift */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		083190AD1A85ACE0004B9A25 /* Globals */ = {
+			isa = PBXGroup;
+			children = (
+				083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */,
+			);
+			name = Globals;
+			sourceTree = "<group>";
+		};
 		089FF79F1A857FA9001FBE6E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,7 +132,7 @@
 			children = (
 				089FF79F1A857FA9001FBE6E /* Controllers */,
 				18C73FF91A8567BE00B7C1A7 /* Singletons */,
-				18C73FF61A8567A100B7C1A7 /* Views */,
+				18C73FF61A8567A100B7C1A7 /* Includes */,
 				18C73FF71A8567AC00B7C1A7 /* Models */,
 				18C73FF81A8567B400B7C1A7 /* ViewControllers */,
 				18C73FD61A855EF800B7C1A7 /* ViewController.swift */,
@@ -155,12 +175,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		18C73FF61A8567A100B7C1A7 /* Views */ = {
+		18C73FF61A8567A100B7C1A7 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
-				089FF7A41A85A1E6001FBE6E /* Navigation.swift */,
+				083190AD1A85ACE0004B9A25 /* Globals */,
+				083190AC1A85ACD7004B9A25 /* Interface */,
 			);
-			name = Views;
+			name = Includes;
 			sourceTree = "<group>";
 		};
 		18C73FF71A8567AC00B7C1A7 /* Models */ = {
@@ -177,6 +198,7 @@
 				18C73FFE1A85699700B7C1A7 /* ProfileVC.swift */,
 				18C740001A856A4700B7C1A7 /* SongsTableVC.swift */,
 				18C740021A856AB300B7C1A7 /* AboutVC.swift */,
+				083190B21A85B5E8004B9A25 /* KaraokeVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -294,10 +316,12 @@
 			files = (
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
+				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
 				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
+				083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */,
 				18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
