@@ -19,7 +19,7 @@ import UIKit
     @IBAction func songsLink(sender: AnyObject) {
         println("THIS SHOULD PRINT")
         //self.delegate.pushViewControllerUsinDelegate(songsTableVC)
-        profileVC.performSegueWithIdentifier("profileToSongs", sender: SongsTableVC())
+        customNavigateFromSourceViewController(profileVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
         println("THIS SHOULD PRINT")
         
     }

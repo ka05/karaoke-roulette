@@ -13,11 +13,6 @@ class SongsTableVC: UITableViewController {
     @IBOutlet weak var nav: UIView!
     
     
-    @IBAction func toggleMenu(sender: UITapGestureRecognizer) {
-        println("touched")
-        self.nav.layoutIfNeeded()
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
