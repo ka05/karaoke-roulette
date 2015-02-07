@@ -20,10 +20,10 @@
         <relationship name="genre" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Genre" syncable="YES"/>
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
     </entity>
-    <entity name="UserInfo" syncable="YES">
+    <entity name="User" syncable="YES">
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profileImageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="userId" optional="YES" syncable="YES"/>
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
     </entity>
     <entity name="Video" syncable="YES">
@@ -34,13 +34,13 @@
         <attribute name="videoID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="videoName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserInfo" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Artist" positionX="-162" positionY="297" width="128" height="88"/>
-        <element name="Genre" positionX="-479" positionY="306" width="128" height="88"/>
+        <element name="User" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Song" positionX="-317" positionY="108" width="128" height="163"/>
-        <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
+        <element name="Genre" positionX="-479" positionY="306" width="128" height="88"/>
+        <element name="Artist" positionX="-162" positionY="297" width="128" height="88"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
     </elements>
 </model>
