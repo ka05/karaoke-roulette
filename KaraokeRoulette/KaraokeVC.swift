@@ -31,7 +31,11 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBOutlet weak var startStopButton: UIButton!
     
     @IBAction func startSong(sender: AnyObject) {
-        beginCountdown()
+        if !isRecording {
+            startRecording()
+        } else {
+            stopRecording()
+        }
     }
     
     override func viewDidLoad() {
@@ -119,10 +123,17 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
             // start recording to file url
             movieOutput?.startRecordingToOutputFileURL(outputURL, recordingDelegate: self)
+
+            // change button and state
+            startStopButton.setTitle("Stop Song", forState: UIControlState.Normal)
+            isRecording = true
         }
     }
     
     func stopRecording() {
+        // change button and state
+        startStopButton.setTitle("Start Song", forState: UIControlState.Normal)
+        isRecording = false
         movieOutput?.stopRecording()
         session.stopRunning()
     }
