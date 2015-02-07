@@ -9,9 +9,63 @@
 import UIKit
 import Foundation
 
-class SongsTableVC: UITableViewController {
+class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var nav: UIView!
     
+    // MARK: - Navigation Animations
+    
+    @IBOutlet weak var navBar: Navigation!
+    @IBOutlet weak var navHeight: NSLayoutConstraint!
+    
+    var toggleBoolNavDown = false
+    
+    
+    @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
+        println("swipe toggled")
+        
+        
+        self.view.bringSubviewToFront(nav)
+        
+        self.nav.layoutIfNeeded()
+        self.navHeight.constant = 300
+        
+        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.navBar.layoutIfNeeded() }, completion: nil)
+        toggleBoolNavDown = true
+    }
+    
+    @IBAction func swipeNavUp(sender: UISwipeGestureRecognizer) {
+        println("swipe toggled")
+        
+        self.view.bringSubviewToFront(nav)
+        
+        self.nav.layoutIfNeeded()
+        self.navHeight.constant = 70
+        
+        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.navBar.layoutIfNeeded() }, completion: nil)
+        toggleBoolNavDown = true
+    }
+    
+    @IBAction func toggleNav(sender: UITapGestureRecognizer) {
+        println("touch toggled")
+        
+        self.view.bringSubviewToFront(nav)
+        
+        self.nav.layoutIfNeeded()
+        if(toggleBoolNavDown == false){
+            self.navHeight.constant = 300
+            
+            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.navBar.layoutIfNeeded() }, completion: nil)
+            toggleBoolNavDown = true
+        }
+        else{
+            self.navHeight.constant = 70
+            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.navBar.layoutIfNeeded() }, completion: nil)
+            
+            toggleBoolNavDown = false
+        }
+        
+    }
+    // END:
     
     
     override func viewDidLoad() {
@@ -31,27 +85,27 @@ class SongsTableVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 0
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 0
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

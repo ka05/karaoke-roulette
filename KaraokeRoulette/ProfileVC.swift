@@ -14,7 +14,7 @@ import Photos
 
 class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     var imagePicker = UIImagePickerController()
-    var toggleBoolNavDown = false
+    
     var cameraUI: UIImagePickerController! = UIImagePickerController()
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -27,7 +27,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     
-    
+    var toggleBoolNavDown = false
     
     
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
