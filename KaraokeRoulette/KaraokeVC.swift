@@ -12,7 +12,9 @@ import CoreMedia
 import MobileCoreServices
 import AVFoundation
 
-class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
+class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    //AVCaptureFileOutputRecordingDelegate
 
     let session = AVCaptureSession()
     var preview:AVCaptureVideoPreviewLayer?
@@ -137,7 +139,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
-            let outputURL = NSURL(fileURLWithPath: createDocPath())
+            let outputURL = NSURL(fileURLWithPath: createDocPath(getRandID()))
         }
     }
     

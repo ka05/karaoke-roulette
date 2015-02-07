@@ -18,8 +18,6 @@ func createDocPath(fileName: String) -> String {
     return docs + "/" + fileName
 }
 
-func createDateTimeString() -> {
-    let date = NSDate()
-    let calendar = NSCalendar.currentCalendar()
-    let components = calendar.components(.CalendarUnitDay | .CalendarUnitHour | .CalendarUnitMinute  fromDate: <#NSDate#>)
+func getRandID() -> String {
+    return NSUUID().UUIDString
 }
