@@ -53,30 +53,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
 //            self.presentViewController(imagePicker, animated: true, completion: nil)
 //        }
         
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //2
-        let fetchRequest = NSFetchRequest(entityName:"UserInfo")
-        
-        //3
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as [NSManagedObject]?
-        
-//        if let results = fetchedResults {
-//            people = results
-//        } else {
-//            println("Could not fetch \(error), \(error!.userInfo)")
-//        }
-//        
-//        if(){
-//            
-//        } else{
-//            self.presentCamera()
-//        }
-        
+        self.presentCamera()
     }
     
     
@@ -163,6 +140,30 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.profileImageView.clipsToBounds = true
 //        self.profileImageView.layer.borderWidth = 3
 //        self.profileImageView.layer.borderColor = UIColor.whiteColor().CGColor
+        
+        var profileImageArr = NSArray()
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName:"UserInfo")
+        
+        //3
+        var error: NSError?
+        
+        var fetchedResults:NSArray = managedContext.executeFetchRequest(fetchRequest, error: &error)!
+        
+        if(fetchedResults.count > 0){
+            var res = fetchedResults[0] as NSManagedObject
+            var image = UIImage(CGImage: fetchedResults.valueForKey("profileImageData") as CGImage)
+            
+            profileImageView.image = image
+        }
+    
+        
+        
+        
     }
     
     /*
