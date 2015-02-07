@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080A1B2D1A86A028006DE962 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B2C1A86A028006DE962 /* Utils.swift */; };
 		083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */; };
 		083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190B21A85B5E8004B9A25 /* KaraokeVC.swift */; };
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080A1B2C1A86A028006DE962 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGlobals.swift; sourceTree = "<group>"; };
 		083190B21A85B5E8004B9A25 /* KaraokeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaraokeVC.swift; sourceTree = "<group>"; };
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */,
+				080A1B2C1A86A028006DE962 /* Utils.swift */,
 			);
 			name = Globals;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
+				080A1B2D1A86A028006DE962 /* Utils.swift in Sources */,
 				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
 				083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */,

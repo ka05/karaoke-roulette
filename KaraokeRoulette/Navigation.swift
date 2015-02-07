@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Herendeen. All rights reserved.
 //
 
-//http://iphonedev.tv/blog/2014/12/15/create-an-ibdesignable-uiview-subclass-with-code-from-an-xib-file-in-xcode-6
+// http://iphonedev.tv/blog/2014/12/15/create-an-ibdesignable-uiview-subclass-with-code-from-an-xib-file-in-xcode-6
 
 import UIKit
 

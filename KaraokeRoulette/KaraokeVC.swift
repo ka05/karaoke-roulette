@@ -8,15 +8,19 @@
 
 import UIKit
 import MediaPlayer
+import CoreMedia
 import MobileCoreServices
 import AVFoundation
 
-class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
 
     let session = AVCaptureSession()
     var preview:AVCaptureVideoPreviewLayer?
-    var captureDevice:AVCaptureDevice?
+    var videoDevice:AVCaptureDevice?
+    var audioDevice:AVCaptureDevice?
     var audioPlayer:AVAudioPlayer?
+    var movieOutput:AVCaptureMovieFileOutput?
+    var captureConnection:AVCaptureConnection?
     var player:AVPlayer?
     var countdown:Int!
    
@@ -28,7 +32,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBAction func startSong(sender: AnyObject) {
         beginCountdown()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,12 +42,21 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         // Loop through the capture devices on this phone
         for device in devices {
             // make sure device supports video
-            if (device.hasMediaType(AVMediaTypeVideo)) {
+            if device.hasMediaType(AVMediaTypeVideo) {
                 // Check for front camera
-                if(device.position == AVCaptureDevicePosition.Front) {
-                    captureDevice = device as? AVCaptureDevice
+                if device.position == AVCaptureDevicePosition.Front {
+                    videoDevice = device as? AVCaptureDevice
                 }
             }
+        }
+        
+        // get auido device
+        audioDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeAudio)
+        
+        
+        // start running the capture session
+        if videoDevice != nil && audioDevice != nil {
+            beginSession()
         }
     }
 
@@ -78,19 +91,53 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func beginSession() {
         var err:NSError? = nil
-        session.addInput(AVCaptureDeviceInput(device: captureDevice, error:&err))
+        session.addInput(AVCaptureDeviceInput(device: videoDevice, error:&err))
+        session.addInput(AVCaptureDeviceInput(device: audioDevice, error: &err))
+        session.sessionPreset = AVCaptureSessionPresetLow
         
         if err != nil { NSLog("%@", err!) }
         
         preview = AVCaptureVideoPreviewLayer(session: session)
+        preview?.frame = self.view.bounds
+        preview?.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.videoView.layer.addSublayer(preview)
-        preview?.frame = self.view.layer.frame
+        
+//        var videoOutput = AVCaptureVideoDataOutput()
+//        videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey:kCVPixelFormatType_32BGRA]
+//        videoOutput.setSampleBufferDelegate(self, queue: MainQueue)
+//        
+//        session.addOutput(videoOutput)
+        
+        setUpOutput()
+        
         session.startRunning()
     }
     
+    // sets up the AVCaptureMovieFileOutput
+    func setUpOutput() {
+        movieOutput = AVCaptureMovieFileOutput()
+        var maxTime:Float64 = 360
+        var preferredFramesSec:Int32 = 30
+        var maxTotal:CMTime = CMTimeMakeWithSeconds(maxTime, preferredFramesSec)
+        
+        movieOutput?.minFreeDiskSpaceLimit = 2048*2048
+        
+        session.addOutput(movieOutput)
+    }
+    
+//    func setUpCameraOutput {
+//        captureConnection = movieOutput?.connectionWithMediaType(AVMediaTypeVideo)
+//        captureConnection.videoMinFrameDuration = CMTimeMake(1, CAPTURE_FRAMES_PER_SECOND);
+//        
+//    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, fromConnection connection: AVCaptureConnection!) {
+        println("I am capturing")
+    }
+    
     func startRecording() {
-        if captureDevice != nil {
-            beginSession()
+        if videoDevice != nil && audioDevice != nil {
+            let outputURL = NSURL(fileURLWithPath: createDocPath())
         }
     }
     
