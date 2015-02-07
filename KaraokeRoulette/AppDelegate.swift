@@ -17,8 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        
-        var profileVC = ProfileVC()
+//        
+//        let profileVC = ProfileVC()
+//        let mainStoryboard = UIStoryboard("MainStoryboard", bundle: nil)
+//        
+//        let profileVC = mainStoryboard.instantiateViewControllerWithIdentifier(NSString:"ProfileVC") as ProfileVC
+//        self.navigationController.pushViewController(profileVC, animated: true)
         
         return true
     }
