@@ -15,6 +15,7 @@ import AVFoundation
 class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
     
     let session = AVCaptureSession()
+    var curFilePath:String?
     var preview:AVCaptureVideoPreviewLayer?
     var videoDevice:AVCaptureDevice?
     var audioDevice:AVCaptureDevice?
@@ -105,19 +106,24 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-        println("I finished recording")
+        println("I recorded succesfully")
+        
+        // error checking
+        if error != nil {
+            let code = error.userInfo
+        }
     }
     
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
-            let filePath = createDocPath(getRandID()) + ".mov"
-            let outputURL = NSURL(fileURLWithPath: filePath)
+            curFilePath = createDocPath(getRandID()) + ".mov"
+            let outputURL = NSURL(fileURLWithPath: curFilePath!)
             let fileManager = NSFileManager.defaultManager()
             
             // check to see if it exists
-            if fileManager.fileExistsAtPath(filePath) {
+            if fileManager.fileExistsAtPath(curFilePath!) {
                 var err:NSError?
-                if !fileManager.removeItemAtPath(filePath, error: &err) {
+                if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
                     println("Error removing file")
                 }
             }

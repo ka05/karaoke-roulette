@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080A1B301A86D2F7006DE962 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B2F1A86D2F7006DE962 /* Artist.swift */; };
+		080A1B321A86D2F7006DE962 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B311A86D2F7006DE962 /* UserInfo.swift */; };
+		080A1B341A86D2F8006DE962 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B331A86D2F8006DE962 /* Genre.swift */; };
+		080A1B361A86D2F8006DE962 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B351A86D2F8006DE962 /* Video.swift */; };
+		080A1B381A86D2F8006DE962 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B371A86D2F8006DE962 /* Song.swift */; };
 		083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */; };
 		083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190B21A85B5E8004B9A25 /* KaraokeVC.swift */; };
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
@@ -42,6 +47,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080A1B2F1A86D2F7006DE962 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		080A1B311A86D2F7006DE962 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		080A1B331A86D2F8006DE962 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		080A1B351A86D2F8006DE962 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		080A1B371A86D2F8006DE962 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGlobals.swift; sourceTree = "<group>"; };
 		083190B21A85B5E8004B9A25 /* KaraokeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaraokeVC.swift; sourceTree = "<group>"; };
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
@@ -88,6 +98,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080A1B2E1A86D2C0006DE962 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				080A1B371A86D2F8006DE962 /* Song.swift */,
+				080A1B351A86D2F8006DE962 /* Video.swift */,
+				080A1B331A86D2F8006DE962 /* Genre.swift */,
+				080A1B311A86D2F7006DE962 /* UserInfo.swift */,
+				080A1B2F1A86D2F7006DE962 /* Artist.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		083190AC1A85ACD7004B9A25 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +215,7 @@
 		18C73FF71A8567AC00B7C1A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				080A1B2E1A86D2C0006DE962 /* CoreData */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -321,18 +344,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				080A1B381A86D2F8006DE962 /* Song.swift in Sources */,
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
 				18470EE71A86C98600F9716F /* Utils.swift in Sources */,
+				080A1B301A86D2F7006DE962 /* Artist.swift in Sources */,
+				080A1B341A86D2F8006DE962 /* Genre.swift in Sources */,
 				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
 				083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */,
+				080A1B361A86D2F8006DE962 /* Video.swift in Sources */,
 				18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
+				080A1B321A86D2F7006DE962 /* UserInfo.swift in Sources */,
 				18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
