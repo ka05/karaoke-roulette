@@ -28,7 +28,7 @@
         <!--Songs TableVC-->
         <scene sceneID="edN-Hv-89a">
             <objects>
-                <tableViewController id="jVN-TX-mkS" customClass="SongsTableVC" customModule="KaraokeRoulette" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SongsTableVC" id="jVN-TX-mkS" customClass="SongsTableVC" customModule="KaraokeRoulette" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sZO-Zp-vye">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
