@@ -23,7 +23,7 @@ class SongsDetailVC: UIViewController {
         
         karaokeVC.song = self.song
         let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("karaokeNavigationController") as UINavigationController
-        self.navigationController?.pushViewController(karaokeVC, animated: true)
+        self.navigationController?.presentViewController(karaokeVC, animated: true, completion: nil)
         
         //customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "KaraokeVC")
     }

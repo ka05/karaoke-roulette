@@ -155,6 +155,8 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         }
         KaraokeText.text = toInsert
         setKaraokeFont()
+        changeLine()
+        lineIndex = 0
     }
     
     // MARK: Capture Session
