@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08047BFF1A86EE8F001A023C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08047BFE1A86EE8F001A023C /* Song.swift */; };
-		080A1B301A86D2F7006DE962 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B2F1A86D2F7006DE962 /* Artist.swift */; };
-		080A1B321A86D2F7006DE962 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B311A86D2F7006DE962 /* UserInfo.swift */; };
-		080A1B341A86D2F8006DE962 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B331A86D2F8006DE962 /* Genre.swift */; };
-		080A1B361A86D2F8006DE962 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080A1B351A86D2F8006DE962 /* Video.swift */; };
 		083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */; };
 		083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083190B21A85B5E8004B9A25 /* KaraokeVC.swift */; };
+		0834BFB41A871CC100C6FDD0 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB31A871CC100C6FDD0 /* Song.swift */; };
+		0834BFB61A871CC100C6FDD0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB51A871CC100C6FDD0 /* Video.swift */; };
+		0834BFB81A871CC100C6FDD0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB71A871CC100C6FDD0 /* UserInfo.swift */; };
+		0834BFBA1A871CC100C6FDD0 /* Initialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB91A871CC100C6FDD0 /* Initialize.swift */; };
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
 		089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A21A858181001FBE6E /* SongTimer.swift */; };
 		089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A41A85A1E6001FBE6E /* Navigation.swift */; };
@@ -31,7 +30,6 @@
 		1870433C1A86FF8600E6F33F /* StartScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870433B1A86FF8600E6F33F /* StartScript.swift */; };
 		187043461A87039200E6F33F /* guns n' roses - sweet child o' mine.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043401A87039200E6F33F /* guns n' roses - sweet child o' mine.lrc */; };
 		187043471A87039200E6F33F /* journey - don't stop believing.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043411A87039200E6F33F /* journey - don't stop believing.lrc */; };
-		187043481A87039200E6F33F /* Journey - Faithfully.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043421A87039200E6F33F /* Journey - Faithfully.lrc */; };
 		187043491A87039200E6F33F /* Taylor Swift - Shake it off.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043431A87039200E6F33F /* Taylor Swift - Shake it off.lrc */; };
 		1870434A1A87039200E6F33F /* tom petty - free fallin.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043441A87039200E6F33F /* tom petty - free fallin.lrc */; };
 		1870434B1A87039200E6F33F /* twisted sisters - i wanna rock.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 187043451A87039200E6F33F /* twisted sisters - i wanna rock.lrc */; };
@@ -68,13 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08047BFE1A86EE8F001A023C /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		080A1B2F1A86D2F7006DE962 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		080A1B311A86D2F7006DE962 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		080A1B331A86D2F8006DE962 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		080A1B351A86D2F8006DE962 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationGlobals.swift; sourceTree = "<group>"; };
 		083190B21A85B5E8004B9A25 /* KaraokeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KaraokeVC.swift; sourceTree = "<group>"; };
+		0834BFB31A871CC100C6FDD0 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		0834BFB51A871CC100C6FDD0 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		0834BFB71A871CC100C6FDD0 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		0834BFB91A871CC100C6FDD0 /* Initialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initialize.swift; sourceTree = "<group>"; };
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
 		089FF7A21A858181001FBE6E /* SongTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTimer.swift; sourceTree = "<group>"; };
 		089FF7A41A85A1E6001FBE6E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -92,7 +89,6 @@
 		1870433B1A86FF8600E6F33F /* StartScript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScript.swift; sourceTree = "<group>"; };
 		187043401A87039200E6F33F /* guns n' roses - sweet child o' mine.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "guns n' roses - sweet child o' mine.lrc"; sourceTree = "<group>"; };
 		187043411A87039200E6F33F /* journey - don't stop believing.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "journey - don't stop believing.lrc"; sourceTree = "<group>"; };
-		187043421A87039200E6F33F /* Journey - Faithfully.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Journey - Faithfully.lrc"; sourceTree = "<group>"; };
 		187043431A87039200E6F33F /* Taylor Swift - Shake it off.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Taylor Swift - Shake it off.lrc"; sourceTree = "<group>"; };
 		187043441A87039200E6F33F /* tom petty - free fallin.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "tom petty - free fallin.lrc"; sourceTree = "<group>"; };
 		187043451A87039200E6F33F /* twisted sisters - i wanna rock.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "twisted sisters - i wanna rock.lrc"; sourceTree = "<group>"; };
@@ -143,11 +139,10 @@
 		080A1B2E1A86D2C0006DE962 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				08047BFE1A86EE8F001A023C /* Song.swift */,
-				080A1B351A86D2F8006DE962 /* Video.swift */,
-				080A1B331A86D2F8006DE962 /* Genre.swift */,
-				080A1B311A86D2F7006DE962 /* UserInfo.swift */,
-				080A1B2F1A86D2F7006DE962 /* Artist.swift */,
+				0834BFB91A871CC100C6FDD0 /* Initialize.swift */,
+				0834BFB71A871CC100C6FDD0 /* UserInfo.swift */,
+				0834BFB51A871CC100C6FDD0 /* Video.swift */,
+				0834BFB31A871CC100C6FDD0 /* Song.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -210,7 +205,6 @@
 			children = (
 				187043401A87039200E6F33F /* guns n' roses - sweet child o' mine.lrc */,
 				187043411A87039200E6F33F /* journey - don't stop believing.lrc */,
-				187043421A87039200E6F33F /* Journey - Faithfully.lrc */,
 				187043431A87039200E6F33F /* Taylor Swift - Shake it off.lrc */,
 				187043441A87039200E6F33F /* tom petty - free fallin.lrc */,
 				187043451A87039200E6F33F /* twisted sisters - i wanna rock.lrc */,
@@ -428,7 +422,6 @@
 				18470EED1A86D80F00F9716F /* CustomVideoCell.xib in Resources */,
 				187043601A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 in Resources */,
 				18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */,
-				187043481A87039200E6F33F /* Journey - Faithfully.lrc in Resources */,
 				18470EF51A86E7F100F9716F /* orange-record-circle.png in Resources */,
 				1870435E1A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 in Resources */,
 				18470EF31A86E70200F9716F /* default-placeholder.png in Resources */,
@@ -455,28 +448,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08047BFF1A86EE8F001A023C /* Song.swift in Sources */,
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
 				18470EFD1A86EEEA00F9716F /* MashupVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
+				0834BFBA1A871CC100C6FDD0 /* Initialize.swift in Sources */,
 				18470EFA1A86E8A000F9716F /* CustomFriendsCell.swift in Sources */,
 				18470EEC1A86D80F00F9716F /* CustomVideoCell.swift in Sources */,
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
 				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
 				18470EE71A86C98600F9716F /* Utils.swift in Sources */,
+				0834BFB61A871CC100C6FDD0 /* Video.swift in Sources */,
 				1870433C1A86FF8600E6F33F /* StartScript.swift in Sources */,
-				080A1B301A86D2F7006DE962 /* Artist.swift in Sources */,
-				080A1B341A86D2F8006DE962 /* Genre.swift in Sources */,
 				18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */,
 				18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */,
 				083190AF1A85ACF8004B9A25 /* NotificationGlobals.swift in Sources */,
-				080A1B361A86D2F8006DE962 /* Video.swift in Sources */,
 				18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */,
+				0834BFB41A871CC100C6FDD0 /* Song.swift in Sources */,
 				18470EF11A86E33700F9716F /* SongsDetailVC.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
-				080A1B321A86D2F7006DE962 /* UserInfo.swift in Sources */,
+				0834BFB81A871CC100C6FDD0 /* UserInfo.swift in Sources */,
 				18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

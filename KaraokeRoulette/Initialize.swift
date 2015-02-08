@@ -1,5 +1,5 @@
 //
-//  Artist.swift
+//  Initialize.swift
 //  KaraokeRoulette
 //
 //  Created by Wyatt McBain on 2/7/15.
@@ -9,10 +9,8 @@
 import Foundation
 import CoreData
 
-class Artist: NSManagedObject {
+class Initialize: NSManagedObject {
 
-    @NSManaged var artist: String
-    @NSManaged var artistID: NSNumber
-    @NSManaged var song: NSSet
+    @NSManaged var initialized: NSNumber
 
 }

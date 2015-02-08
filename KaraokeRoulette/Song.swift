@@ -11,14 +11,23 @@ import CoreData
 
 class Song: NSManagedObject {
 
-    @NSManaged var artistID: NSNumber
-    @NSManaged var genreID: NSNumber
+    @NSManaged var artistName: String
     @NSManaged var length: NSNumber
+    @NSManaged var lyrics: String
     @NSManaged var songID: NSNumber
     @NSManaged var songTitle: String
-    @NSManaged var lyrics: String
-    @NSManaged var artist: Artist
-    @NSManaged var genre: Genre
+    @NSManaged var fileName: String
     @NSManaged var video: NSSet
 
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, artistName: String, fileName: String, length: Float, lyrics: String, songID: NSNumber, songTitle: String) -> Song {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Song", inManagedObjectContext: moc) as Song
+        newItem.artistName = artistName
+        newItem.fileName = fileName
+        newItem.length = length
+        newItem.lyrics = lyrics
+        newItem.songID = songID
+        newItem.songTitle = songTitle
+        
+        return newItem
+    }
 }

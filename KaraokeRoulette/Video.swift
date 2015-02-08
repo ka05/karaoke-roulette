@@ -17,7 +17,7 @@ class Video: NSManagedObject {
     @NSManaged var userID: NSNumber
     @NSManaged var videoID: NSNumber
     @NSManaged var videoName: String
-    @NSManaged var song: NSManagedObject
     @NSManaged var user: UserInfo
+    @NSManaged var song: Song
 
 }
