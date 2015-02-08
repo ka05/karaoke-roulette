@@ -30,14 +30,26 @@ class SongsDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
+    override func viewWillAppear(animated: Bool) {
         // Do any additional setup after loading the view.
         artistLabel.text = song.artistName
         songTitleLabel.text = song.songTitle
-        songLyricsTextView.text = song.lyrics
         
+        // parse lyrics from parser
+        let parser = LyricsParser(song: song)
+        let lines = parser.getInfo().lines
+        
+        // iterate and add to lyrics text view
+        var toAdd:String = ""
+        for line in lines {
+            toAdd += line + "\n"
+        }
+        songLyricsTextView.text = toAdd
+        songLyricsTextView.textColor = UIColor.whiteColor()
+        songLyricsTextView.font = UIFont(name: "Helvetica", size: 16)
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

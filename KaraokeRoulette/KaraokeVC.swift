@@ -93,15 +93,16 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         let timer = SongTimer(times: self.times)
         timer.startCountdown(countdown)
         KaraokeText.text = ""
-        KaraokeText.font = UIFont(name: "Helvetica", size: 18)
         KaraokeText.text = "5"
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "markCountdown", name: countdownNotificationKey, object: nil)
+        setCountdownFont()
     }
     
     // mark the countdown time in the view
     func markCountdown() {
         countdown--
         KaraokeText.text = String(countdown)
+        setCountdownFont()
         if countdown == 0 {
             // change notifications
             NSNotificationCenter.defaultCenter().removeObserver(countdownNotificationKey)
@@ -145,12 +146,12 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     // Put line into the text view
     func addLinesToTextView() {
         KaraokeText.text = ""
-        KaraokeText.font = UIFont(name: "Helvetica", size: 32)
         var toInsert = ""
         for line in self.lines {
             toInsert += line + "\n"
         }
         KaraokeText.text = toInsert
+        setKaraokeFont()
     }
     
     // MARK: Capture Session
@@ -235,7 +236,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     // stops the recording
     func stopRecording() {
         // change button and state
-        startStopButton.setTitle("Start Song", forState: UIControlState.Normal)
+        startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
         isRecording = false
         movieOutput?.stopRecording()
         session.stopRunning()
@@ -280,6 +281,21 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         println("\(error.localizedDescription)")
     }
     
+    // MARK: Font helpers
+    func setCountdownFont() {
+        KaraokeText.font = UIFont(name: "Helvetica", size: 32)
+        setKaraokeFontAlign()
+    }
+    
+    func setKaraokeFont() {
+        KaraokeText.font = UIFont(name: "Helvetica", size: 18)
+        setKaraokeFontAlign()
+    }
+    
+    func setKaraokeFontAlign() {
+        KaraokeText.textColor = UIColor.whiteColor()
+        KaraokeText.textAlignment = NSTextAlignment.Center
+    }
     /*
     // MARK: - Navigation
     
