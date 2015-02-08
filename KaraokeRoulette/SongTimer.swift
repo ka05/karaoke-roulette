@@ -10,26 +10,23 @@ import Foundation
 
 class SongTimer : NSObject {
     let times:[Double]
-    let length:Double
     let countSpace:Double
     var started:Bool
     var firstCount:Bool
-    var countdown:Int
+    var countdown:UInt8!
     var index:Int
     var countMark:Double
     var start = NSTimeInterval()
     var elapsed = NSTimeInterval()
     var timer:NSTimer!
     
-    init(times: [Double], length: Double) {
+    init(times: [Double]) {
         self.times = times
-        self.length = length
         self.started = false
         self.firstCount = true
         self.countMark = 0.6
         self.countSpace = self.countMark
         self.index = 0
-        self.countdown = 5
     }
     
     // called when deinit
@@ -39,7 +36,7 @@ class SongTimer : NSObject {
     
     // adds the observer for song start
     func addSongStartObserver() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startSongTiming", name: "com.KaraokeRoulette.songStart", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startSongTiming", name: startSongTimingNotificationKey, object: nil)
     }
     
     // remove the observer for song start
@@ -65,22 +62,21 @@ class SongTimer : NSObject {
         checkTime()
     }
     
+    // starts the countdown
+    func startCountdown(countdown: UInt8) {
+        self.countdown = countdown
+        updateTime()
+    }
+    
     // Performs the countdown operation
     func performCountdown() {
         if firstCount {
             self.addSongStartObserver()
-            NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
         } else {
             countdown--
             countMark += countSpace
-            NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
-            
-            // countdown is over
-            if countdown == 0 {
-                NSNotificationCenter.defaultCenter().postNotificationName(countdownStopNotificationKey, object: self)
-                stopTimer()
-            }
         }
+        NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
     }
     
     // starts the song timing
@@ -94,7 +90,6 @@ class SongTimer : NSObject {
         if elapsed > times[index] {
             NSNotificationCenter.defaultCenter().postNotificationName(lineChangeNotificationKey, object: self)
         }
-        if elapsed > length { stopTimer() }
     }
     
     // func stopTimer

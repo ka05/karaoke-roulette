@@ -25,7 +25,11 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var movieOutput:AVCaptureMovieFileOutput?
     var captureConnection:AVCaptureConnection?
     var player:AVPlayer?
-    var countdown:Int!
+    var toPass:Int!
+    var lines:[String]!
+    var times:[Double]!
+    var countdown = 5 as UInt8
+    var lineIndex = 0
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var textView: UIView!
@@ -34,11 +38,13 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     @IBAction func startSong(sender: AnyObject) {
         if !isRecording {
-            startRecording()
+            startCountdown()
         } else {
             stopRecording()
         }
     }
+    
+    // MARK: Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +73,87 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
+    // set up
+    override func viewWillAppear(animated: Bool) {
+        getParserInfo()
+        addLinesToTextView()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Timing
+    
+    // starts the countdown process
+    func startCountdown() {
+        let timer = SongTimer(times: self.times)
+        timer.startCountdown(countdown)
+        KaraokeText.text = ""
+        KaraokeText.font = UIFont(name: "Helvetica", size: 18)
+        KaraokeText.text = "5"
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "markCountdown", name: countdownNotificationKey, object: nil)
+    }
+    
+    // mark the countdown time in the view
+    func markCountdown() {
+        countdown--
+        KaraokeText.text = String(countdown)
+        if countdown == 0 {
+            // change notifications
+            NSNotificationCenter.defaultCenter().removeObserver(countdownNotificationKey)
+            NSNotificationCenter.defaultCenter().postNotificationName(startSongTimingNotificationKey, object: self)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeLine", name: lineChangeNotificationKey, object: nil)
+            addLinesToTextView()
+        }
+    }
+    
+    // changes the highlighted text in the textview
+    func changeLine() {
+        KaraokeText.scrollRangeToVisible(getLineChangeRange())
+        lineIndex++
+    }
+    
+    // gets the range of a regex match for the line
+    func getLineChangeRange() -> NSRange {
+        // turn text into regex
+        var lineString = lines[lineIndex]
+        lineString = lineString.stringByReplacingOccurrencesOfString(" ", withString: "\\s", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString(".", withString: "\\.", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("'", withString: "\\'", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("\n", withString: "\\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        // create regex, get range
+        let regex = NSRegularExpression(pattern: lineString, options: nil, error: nil)
+        let range = NSMakeRange(0, countElements(KaraokeText.text))
+        let matches = regex?.matchesInString(KaraokeText.text, options: nil, range: range) as [NSTextCheckingResult]
+        let match = matches.last
+        let newRange = match?.range
+        return newRange!
+    }
+    
+    // MARK: Setup
+    
+    // Get the song lyrics/times from the parser
+    func getParserInfo() {
+        let parser = LyricsParser(songId: toPass)
+        let parserInfo = parser.getInfo()
+        lines = parserInfo.lines
+        times = parserInfo.times
+    }
+    
+    // Put line into the text view
+    func addLinesToTextView() {
+        KaraokeText.text = ""
+        KaraokeText.font = UIFont(name: "Helvetica", size: 32)
+        var toInsert = ""
+        for line in self.lines {
+            toInsert += line + "\n"
+        }
+        KaraokeText.text = toInsert
+    }
+    
+    // MARK: Capture Session
+    
+    // begins the capture session, but is not recording
     func beginSession() {
         var err:NSError? = nil
         session.addInput(AVCaptureDeviceInput(device: videoDevice, error:&err))
@@ -102,10 +184,12 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         session.addOutput(movieOutput)
     }
     
+    // delegate function, called when recording starts
     func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
         println("I am recording")
     }
     
+    // delegate function, called when recording completes
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         println("I recorded succesfully")
         var recordSuccess = true
@@ -123,6 +207,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
+    // starts recording to the documents directory
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
             curFilePath = createDocPath(getRandID()) + ".mov"
@@ -145,6 +230,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
+    // stops the recording
     func stopRecording() {
         // change button and state
         startStopButton.setTitle("Start Song", forState: UIControlState.Normal)
@@ -157,18 +243,12 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         videoView.hidden = true
     }
     
-    func compressVideo() {
-        
-    }
-    
-    func saveVideo() {
-        
-    }
-    
     func beginCountdown() {
         countdown = 5
         startRecording()
     }
+    
+    // MARK: MP3 Playback
     
     func beginSong() {
         
@@ -196,8 +276,6 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
         stopRecording()
         destroyScreen()
-        saveVideo()
-        
     }
     
     /*
