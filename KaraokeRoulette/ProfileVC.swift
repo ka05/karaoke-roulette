@@ -458,7 +458,19 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.performSegueWithIdentifier("videoSegue", sender: nil)
     }
     
+    // func to handle coloring rows
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.row % 2 == 0)
+        {
+            cell.backgroundColor = orangeColorSpecial
+        }
+        else{
+            cell.backgroundColor = blueColorSpecial
+        }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+    }
     
+    // gets a song from video object given indexpath
     func getVideoForCell(indexPath: NSIndexPath) -> Song{
         var song:Song!
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate

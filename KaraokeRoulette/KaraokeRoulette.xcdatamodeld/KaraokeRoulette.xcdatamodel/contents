@@ -6,6 +6,7 @@
         <attribute name="profileImage" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Song" representedClassName="KaraokeRoulette.Song" syncable="YES">
+        <attribute name="artistImageFileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="artistName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="length" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -32,7 +33,7 @@
     </entity>
     <elements>
         <element name="Friend" positionX="-207" positionY="45" width="128" height="88"/>
-        <element name="Song" positionX="-326" positionY="149" width="128" height="148"/>
+        <element name="Song" positionX="-326" positionY="149" width="128" height="165"/>
         <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="150"/>
     </elements>

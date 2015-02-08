@@ -12,6 +12,7 @@ import CoreData
 class Song: NSManagedObject {
 
     @NSManaged var artistName: String
+    @NSManaged var artistImageFileName: String
     @NSManaged var length: NSNumber
     @NSManaged var lyrics: String
     @NSManaged var songID: NSNumber
