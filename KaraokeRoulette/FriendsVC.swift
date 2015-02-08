@@ -8,9 +8,12 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class FriendsVC: UIViewController {
-
+    
+    var friendsArray: [Friend] = [Friend]()
+    
     // MARK: - Navigation Animations
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
@@ -27,7 +30,7 @@ class FriendsVC: UIViewController {
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
-        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+        UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
         toggleBoolNavDown = true
     }
     
@@ -39,7 +42,7 @@ class FriendsVC: UIViewController {
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
-        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+        UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
         toggleBoolNavDown = true
     }
     
@@ -52,12 +55,12 @@ class FriendsVC: UIViewController {
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
             
-            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+            UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
             toggleBoolNavDown = true
         }
         else{
             self.navHeight.constant = 70
-            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+            UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
             
             toggleBoolNavDown = false
         }
@@ -71,6 +74,23 @@ class FriendsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        let req = NSFetchRequest(entityName: "Friend")
+        var error:NSError? = nil
+        let fetched = context?.executeFetchRequest(req, error: &error) as [NSManagedObject]?
+        
+        // check validity of query
+        if let results = fetched {
+            for result in results {
+                friendsArray.append(result as Friend)
+            }
+        } else {
+            println("Errors: \(error)")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

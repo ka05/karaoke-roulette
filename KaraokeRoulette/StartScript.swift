@@ -60,4 +60,35 @@ class StartScript: NSObject {
             println("Error: \(error)")
         }
     }
+
+    func loadFriends(){
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        // get the data to load
+        if let path = NSBundle.mainBundle().pathForResource("Friends", ofType: "plist") {
+            
+            // cast to dictionary
+            if let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                
+                // get the songs and iterate
+                let friends = dict["Friends"] as NSArray
+                for index in 0..<friends.count {
+                    
+                    // add the song
+                    if let friend = friends[index] as? Dictionary<String, AnyObject> {
+                        var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Friend", inManagedObjectContext: context!) as Friend
+                        toLoad.name = friend["name"] as String
+                        toLoad.profileImage = friend["profileImage"] as String
+                        toLoad.numSongsCompleted = friend["numSongsCompleted"] as NSNumber
+                        
+                        // try and add to core data
+                        var error:NSError? = nil
+                        if !context!.save(&error) {
+                            println("Error: \(error)")
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

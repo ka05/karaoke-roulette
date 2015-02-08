@@ -39,7 +39,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
-        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+        UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
         toggleBoolNavDown = true
     }
     
@@ -51,7 +51,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
-        UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+        UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
         toggleBoolNavDown = true
     }
     
@@ -64,12 +64,12 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
             
-            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+            UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
             toggleBoolNavDown = true
         }
         else{
             self.navHeight.constant = 70
-            UIView.animateWithDuration(0.6, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
+            UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
             
             toggleBoolNavDown = false
         }
