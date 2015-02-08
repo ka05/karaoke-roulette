@@ -131,6 +131,8 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         // Configure the cell...
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("songsCell") as UITableViewCell
+
+        cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "songsCell")
         
         cell.textLabel?.text = self.songsArray[indexPath.row].songTitle
         cell.detailTextLabel?.text = self.songsArray[indexPath.row].artistName
