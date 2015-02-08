@@ -27,6 +27,8 @@ class VideoVC: UIViewController {
     func startPlayingVideo(){
         // get video from documents dir
         //let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString + "/filename"
+        
+        
     }
     
     /*
