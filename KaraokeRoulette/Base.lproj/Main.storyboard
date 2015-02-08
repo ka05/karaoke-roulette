@@ -156,7 +156,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.35294117647058826" green="0.35294117647058826" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n1f-HZ-kAx" firstAttribute="trailing" secondItem="cZG-Sc-N70" secondAttribute="trailingMargin" id="0UK-RF-45b"/>
                             <constraint firstItem="a8d-Sj-pCl" firstAttribute="top" secondItem="n1f-HZ-kAx" secondAttribute="bottom" constant="8" id="7g8-nm-Yig"/>
@@ -206,7 +206,7 @@
         <!--Karaoke-->
         <scene sceneID="jrC-qA-gda">
             <objects>
-                <viewController title="Karaoke" id="sXy-rY-mvr" customClass="KaraokeVC" customModule="KaraokeRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KaraokeVC" title="Karaoke" id="sXy-rY-mvr" customClass="KaraokeVC" customModule="KaraokeRoulette" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iXg-CO-pgL"/>
                         <viewControllerLayoutGuide type="bottom" id="BRp-pl-20H"/>
@@ -399,7 +399,7 @@
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-nS-sak">
                                 <rect key="frame" x="16" y="240" width="568" height="185"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.35294117647058826" green="0.35294117647058826" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="185" id="GvP-sC-Ype"/>
                                 </constraints>
@@ -417,6 +417,9 @@
                                 <state key="normal" image="orange-record-circle.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="startRecordingSong:" destination="Rit-L7-z4m" eventType="touchUpInside" id="OvV-jb-52y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcn-sh-Pn2">
                                 <rect key="frame" x="16" y="20" width="91" height="34"/>
@@ -426,7 +429,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.35294117647058826" green="0.35294117647058826" blue="0.35294117647058826" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7Xn-Fk-OxY" firstAttribute="trailing" secondItem="Xgh-qB-SCo" secondAttribute="trailingMargin" id="3MT-Ik-lhL"/>
                             <constraint firstItem="8Dr-no-uMk" firstAttribute="leading" secondItem="Xgh-qB-SCo" secondAttribute="leadingMargin" id="4n7-yy-JzS"/>
@@ -691,7 +694,7 @@
         <!--karaokeNavigationController-->
         <scene sceneID="w0j-DD-VDA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ByZ-DQ-F6n" userLabel="karaokeNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="karaokeNavigationController" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ByZ-DQ-F6n" userLabel="karaokeNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0rj-XY-gmH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -16,6 +16,18 @@ class SongsDetailVC: UIViewController {
     @IBOutlet weak var songTitleLabel: UILabel!
     @IBOutlet weak var songLyricsTextView: UITextView!
     
+    
+    @IBAction func startRecordingSong(sender: AnyObject) {
+        
+        let karaokeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("KaraokeVC") as KaraokeVC
+        
+        karaokeVC.song = self.song
+        let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("karaokeNavigationController") as UINavigationController
+        self.navigationController?.pushViewController(karaokeVC, animated: true)
+        
+        //customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "KaraokeVC")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

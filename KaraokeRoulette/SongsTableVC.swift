@@ -126,7 +126,7 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         tableView.backgroundView = nil;
-        tableView.backgroundColor = UIColor.blackColor()
+        tableView.backgroundColor = charcoalColorSpecial
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         // Configure the cell...
