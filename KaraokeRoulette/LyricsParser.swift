@@ -11,36 +11,25 @@ import UIKit
 import CoreData
 
 class LyricsParser: NSObject {
-    let songId:Int
-    var input:String!
+    let song:Song
+    var input:String
     var title:String!
     var artist:String!
-    var length:Float!
+    var length:Float
     var times = [Double]()
     var lines = [String]()
     
-    init(songId: Int) {
-        self.songId = songId
+    init(song: Song) {
+        self.song = song
+        self.input = song.lyrics
+        self.length = song.length as Float
     }
     
     // Gets the info of song, sends it back
     func getInfo() -> (lines: [String], times: [Double], length: Float) {
-        getLyrics()
         setMeta()
         parseLines()
         return (lines: self.lines, times: self.times, self.length)
-    }
-    
-    // Gets the lyrics to be parsed
-    func getLyrics() {
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
-        let context = appDel.managedObjectContext!
-        let req = NSFetchRequest(entityName: "Song")
-        req.predicate = NSPredicate(format: "%d", songId)
-        var res:NSArray = context.executeFetchRequest(req, error: nil)!
-        let song = res[0] as Song
-        self.input = song.lyrics as String
-        self.length = song.length as Float
     }
     
     // Performs regular expression grouping
