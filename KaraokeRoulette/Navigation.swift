@@ -14,14 +14,48 @@ import UIKit
 
     var view: UIView!
     
-    @IBOutlet weak var profileVC: ProfileVC!
+    @IBOutlet weak var sourceVC: UIViewController!
     
     @IBAction func songsLink(sender: AnyObject) {
         println("THIS SHOULD PRINT")
-        //self.delegate.pushViewControllerUsinDelegate(songsTableVC)
-        customNavigateFromSourceViewController(profileVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
-        println("THIS SHOULD PRINT")
+        if let songsTable = sourceVC as? SongsTableVC{
+            return
+        }
+        else{
+            
+            customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
+        }
         
+    }
+    
+    @IBAction func profileLink(sender: AnyObject) {
+        if let profile = sourceVC as? ProfileVC{
+            return
+        }
+        else{
+            
+            customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "ProfileVC")
+        }
+    }
+    
+    @IBAction func friendsLink(sender: AnyObject) {
+        if let friends = sourceVC as? FriendsVC{
+            return
+        }
+        else{
+            
+            customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "FriendsVC")
+        }
+    }
+    
+    @IBAction func aboutLink(sender: AnyObject) {
+        if let about = sourceVC as? AboutVC{
+            return
+        }
+        else{
+            
+            customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "AboutVC")
+        }
     }
     
     override init(frame: CGRect) {
