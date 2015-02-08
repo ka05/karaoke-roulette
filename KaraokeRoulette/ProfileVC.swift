@@ -331,6 +331,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     func chooseCameraOrImg(message: String){
         
         var alert : UIAlertController = UIAlertController(title: "Profile Image", message: "Choose Image or Take one", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { alertAction in
+            println("Canceled")
+        }))
         alert.addAction(UIAlertAction(title: "Choose Image", style: UIAlertActionStyle.Default, handler: { alertAction in
             println("Choose photo")
             self.choosePhoto()
@@ -340,9 +343,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             println("Take photo")
             self.presentCamera()
         }))
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { alertAction in
-            println("Canceled")
-        }))
+        
         
         self.presentViewController(alert, animated: true, completion: nil)
         
