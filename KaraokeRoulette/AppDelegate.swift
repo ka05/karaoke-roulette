@@ -42,8 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // run startup script
             println("First time opened")
             
-//            var res = fetchedResults as NSManagedObject
-//            res.setValue(true, forKey: "initialized")
+            let entity =  NSEntityDescription.entityForName("Initialize", inManagedObjectContext: managedContext)
+            let initializedVal = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+            initializedVal.setValue(true, forKey: "initialized")
+            
+            var error: NSError?
+            if !managedContext.save(&error) {
+                println("Could not save \(error), \(error?.userInfo)")
+            }
+
             
             var start = StartScript()
             start.loadInMp3AndUserInfo()
