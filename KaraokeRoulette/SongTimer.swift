@@ -13,7 +13,7 @@ class SongTimer : NSObject {
     let countSpace:Double
     var started:Bool
     var firstCount:Bool
-    var countdown:UInt8!
+    var countdown:Int
     var index:Int
     var countMark:Double
     var start = NSTimeInterval()
@@ -27,6 +27,7 @@ class SongTimer : NSObject {
         self.countMark = 0.6
         self.countSpace = self.countMark
         self.index = 0
+        self.countdown = 0
     }
     
     // called when deinit
@@ -63,7 +64,7 @@ class SongTimer : NSObject {
     }
     
     // starts the countdown
-    func startCountdown(countdown: UInt8) {
+    func startCountdown(countdown: Int) {
         self.countdown = countdown
         updateTime()
     }

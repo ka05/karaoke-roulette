@@ -28,7 +28,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var toPass:Int!
     var lines:[String]!
     var times:[Double]!
-    var countdown = 5 as UInt8
+    var countdown = 5
     var lineIndex = 0
     
     @IBOutlet weak var videoView: UIView!
