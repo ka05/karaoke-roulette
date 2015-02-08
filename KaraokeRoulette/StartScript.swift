@@ -13,18 +13,9 @@ import CoreData
 
 class StartScript: NSObject {
     
-    let appDelegate:AppDelegate?
-    let context:NSManagedObjectContext?
-    
-    override init() {
-        super.init()
-        // get the managedobject context
+    func loadSongs() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
-    }
-    
-    func loadSongs() {
-        
         // get the data to load
         if let path = NSBundle.mainBundle().pathForResource("Songs", ofType: "plist") {
             
@@ -57,6 +48,8 @@ class StartScript: NSObject {
     }
     
     func getUserInfo() {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
         var toLoad = NSEntityDescription.insertNewObjectForEntityForName("UserInfo", inManagedObjectContext: context!) as UserInfo
         toLoad.userName = NSUserName()
         toLoad.userID = NSUUID().UUIDString

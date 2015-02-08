@@ -220,12 +220,15 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         var fetchedResults:NSArray = managedContext.executeFetchRequest(fetchRequest, error: &error)!
         
-        if(fetchedResults.count > 0){
-            println("found image")
-            var res = fetchedResults[0] as NSManagedObject
-            var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
-            image = sFunc_imageFixOrientation(image)
-            self.profileImageView.image = image
+        if fetchedResults.count > 0 {
+//            var res = fetchedResults[0] as UserInfo
+//            println("\(res.profileImageData)")
+//            if res.profileImageData.is {
+//                var image
+//            }
+//            var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
+//            image = sFunc_imageFixOrientation(image)
+//            self.profileImageView.image = image
         }
     }
     
