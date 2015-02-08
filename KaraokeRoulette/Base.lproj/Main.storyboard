@@ -223,11 +223,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.1553648561" green="0.49057343599999997" blue="0.53967773910000005" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-3i-Nq7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-3i-Nq7">
                                 <rect key="frame" x="31" y="50" width="538" height="395"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEt-f9-3jX">
-                                        <rect key="frame" x="5" y="5" width="528" height="375"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEt-f9-3jX">
+                                        <rect key="frame" x="5" y="5" width="528" height="385"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -237,12 +237,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="LEt-f9-3jX" firstAttribute="leading" secondItem="zHl-3i-Nq7" secondAttribute="leading" constant="5" id="1ZY-zy-DMx"/>
-                                    <constraint firstAttribute="trailing" secondItem="LEt-f9-3jX" secondAttribute="trailing" constant="5" id="ViF-9v-9n2"/>
-                                    <constraint firstItem="LEt-f9-3jX" firstAttribute="top" secondItem="zHl-3i-Nq7" secondAttribute="top" constant="5" id="dTq-tq-4P3"/>
+                                    <constraint firstItem="LEt-f9-3jX" firstAttribute="top" secondItem="zHl-3i-Nq7" secondAttribute="top" constant="5" id="7EP-08-S1W"/>
+                                    <constraint firstAttribute="bottom" secondItem="LEt-f9-3jX" secondAttribute="bottom" constant="5" id="aHU-mX-1J8"/>
+                                    <constraint firstAttribute="trailing" secondItem="LEt-f9-3jX" secondAttribute="trailing" constant="5" id="hXe-HC-mbw"/>
+                                    <constraint firstItem="LEt-f9-3jX" firstAttribute="leading" secondItem="zHl-3i-Nq7" secondAttribute="leading" constant="5" id="oMe-o6-IgW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoq-dS-Rw1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aoq-dS-Rw1">
                                 <rect key="frame" x="262" y="495" width="75" height="75"/>
                                 <state key="normal" image="Record_Inactive">
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -455,6 +456,7 @@
                             <constraint firstItem="bBs-lM-eDH" firstAttribute="top" secondItem="8Dr-no-uMk" secondAttribute="bottom" constant="22" id="POT-qC-pD7"/>
                             <constraint firstItem="8Dr-no-uMk" firstAttribute="leading" secondItem="Xgh-qB-SCo" secondAttribute="leadingMargin" id="SP3-PN-LXV"/>
                             <constraint firstItem="bcn-sh-Pn2" firstAttribute="leading" secondItem="Xgh-qB-SCo" secondAttribute="leadingMargin" id="Th6-aU-IXs"/>
+                            <constraint firstItem="bcn-sh-Pn2" firstAttribute="top" secondItem="PqK-GO-6Ad" secondAttribute="bottom" id="WCC-CY-zpO"/>
                             <constraint firstItem="Nw1-3H-aJy" firstAttribute="top" secondItem="rrl-nS-sak" secondAttribute="bottom" constant="30" id="ZRw-6a-25Y"/>
                             <constraint firstItem="bcn-sh-Pn2" firstAttribute="top" secondItem="PqK-GO-6Ad" secondAttribute="bottom" id="iHz-0P-oa2"/>
                             <constraint firstItem="YZ7-3w-0cT" firstAttribute="leading" secondItem="8Dr-no-uMk" secondAttribute="trailing" constant="24" id="o66-wy-wqz"/>
