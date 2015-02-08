@@ -17,12 +17,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-//        
-//        let profileVC = ProfileVC()
-//        let mainStoryboard = UIStoryboard("MainStoryboard", bundle: nil)
-//        
-//        let profileVC = mainStoryboard.instantiateViewControllerWithIdentifier(NSString:"ProfileVC") as ProfileVC
-//        self.navigationController.pushViewController(profileVC, animated: true)
+        
+        
+        // check to see if this is first time opening application
+        // saving to core data
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName:"Initialize")
+        var error: NSError?
+        
+        var fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)!
+        
+        if(fetchedResults.count > 0){
+            // user has opened app before
+            // do nothing so far
+            println("already been opened")
+            
+            
+            
+        } else{
+            // user hasnt opened app before
+            // run startup script
+            println("First time opened")
+            
+//            var res = fetchedResults as NSManagedObject
+//            res.setValue(true, forKey: "initialized")
+            
+            var start = StartScript()
+            start.loadInMp3AndUserInfo()
+        }
+        
         
         
         

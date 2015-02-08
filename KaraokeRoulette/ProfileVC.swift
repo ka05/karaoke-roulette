@@ -209,7 +209,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2
         self.profileImageView.clipsToBounds = true
         self.profileImageView.layer.borderWidth = 3
-        self.profileImageView.layer.borderColor = UIColor.orangeColor().CGColor
+        self.profileImageView.layer.borderColor = UIColor.orangeColor().CGColor // hex  = #e87518
+        
+        // blue hex = #18c1e8
         
         var profileImageArr = NSArray()
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -336,6 +338,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         alert.addAction(UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Cancel, handler: { alertAction in
             println("Take photo")
             self.presentCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { alertAction in
+            println("Canceled")
         }))
         
         self.presentViewController(alert, animated: true, completion: nil)

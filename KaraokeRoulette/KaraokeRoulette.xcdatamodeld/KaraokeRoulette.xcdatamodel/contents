@@ -10,6 +10,9 @@
         <attribute name="genreID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="song" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="genre" inverseEntity="Song" syncable="YES"/>
     </entity>
+    <entity name="Initialize" syncable="YES">
+        <attribute name="initialized" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="Song" representedClassName="Song" syncable="YES">
         <attribute name="artistID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="genreID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -42,5 +45,6 @@
         <element name="Song" positionX="-317" positionY="108" width="128" height="163"/>
         <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
+        <element name="Initialize" positionX="-297" positionY="27" width="128" height="60"/>
     </elements>
 </model>
