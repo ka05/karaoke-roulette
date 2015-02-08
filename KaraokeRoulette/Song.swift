@@ -16,6 +16,7 @@ class Song: NSManagedObject {
     @NSManaged var length: NSNumber
     @NSManaged var songID: NSNumber
     @NSManaged var songTitle: String
+    @NSManaged var lyrics: String
     @NSManaged var artist: Artist
     @NSManaged var genre: Genre
     @NSManaged var video: NSSet
