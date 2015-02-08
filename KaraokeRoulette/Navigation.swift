@@ -10,14 +10,16 @@
 
 import UIKit
 
+// custom navigation view (Slide down UI)
 @IBDesignable class Navigation: UIView{
 
     var view: UIView!
     
+    // source ViewController
     @IBOutlet weak var sourceVC: UIViewController!
     
+    // push to SongsTableVC from wherever
     @IBAction func songsLink(sender: AnyObject) {
-        println("THIS SHOULD PRINT")
         if let songsTable = sourceVC as? SongsTableVC{
             return
         }
@@ -28,6 +30,7 @@ import UIKit
         
     }
     
+    // push to ProfileVC from wherever
     @IBAction func profileLink(sender: AnyObject) {
         if let profile = sourceVC as? ProfileVC{
             return
@@ -38,6 +41,7 @@ import UIKit
         }
     }
     
+    // push to FriendsVC from wherever
     @IBAction func friendsLink(sender: AnyObject) {
         if let friends = sourceVC as? FriendsVC{
             return
@@ -48,6 +52,7 @@ import UIKit
         }
     }
     
+    // push to AboutVC from wherever
     @IBAction func aboutLink(sender: AnyObject) {
         if let about = sourceVC as? AboutVC{
             return
@@ -58,6 +63,7 @@ import UIKit
         }
     }
     
+    // MARK: - Init functions
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -68,6 +74,7 @@ import UIKit
         xibSetup()
     }
     
+    // MARK: - Handles xib file connection and setup
     func xibSetup() {
         view = loadViewFromNib()
         view.frame = bounds

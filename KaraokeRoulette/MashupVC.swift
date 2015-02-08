@@ -9,7 +9,8 @@
 import UIKit
 
 class MashupVC: UIViewController {
-
+    
+    // outlets for mashup videos to be played in
     @IBOutlet weak var quadrant1: UIView!
     @IBOutlet weak var quadrant2: UIView!
     @IBOutlet weak var quadrant3: UIView!

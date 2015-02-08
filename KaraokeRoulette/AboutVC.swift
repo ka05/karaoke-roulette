@@ -11,19 +11,16 @@ import UIKit
 class AboutVC: UIViewController {
     
     
-    // MARK: - Navigation Animations
+    // MARK: - Navigation Control
+    
+    // Outlets for Navigation
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
-    
     var toggleBoolNavDown = false
     
-    
+    // swipe down event to pull navigation ui down
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
@@ -31,11 +28,9 @@ class AboutVC: UIViewController {
         toggleBoolNavDown = true
     }
     
+    // swipe up event to roll navigation ui back up
     @IBAction func swipeNavUp(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
@@ -43,11 +38,9 @@ class AboutVC: UIViewController {
         toggleBoolNavDown = true
     }
     
+    // touch event to toggle navigation
     @IBAction func toggleNav(sender: UITapGestureRecognizer) {
-        println("touch toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
@@ -58,12 +51,11 @@ class AboutVC: UIViewController {
         else{
             self.navHeight.constant = 70
             UIView.animateWithDuration(0.3, delay: 0.0, options: nil, animations: { self.nav.layoutIfNeeded() }, completion: nil)
-            
             toggleBoolNavDown = false
         }
-        
     }
-    // END:
+    
+    // MARK: - viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()

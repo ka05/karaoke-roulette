@@ -11,8 +11,10 @@
 import UIKit
 import CoreData
 
+// Code that handles first runtime of app
 class StartScript: NSObject {
     
+    // func to handle loading in the songs from a plist
     func loadSongs() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
@@ -31,6 +33,7 @@ class StartScript: NSObject {
                         var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Song", inManagedObjectContext: context!) as Song
                         toLoad.songID = index
                         toLoad.artistName = song["artistName"] as String
+                        toLoad.artistImageFileName = song["artistImageFileName"] as String
                         toLoad.fileName = song["fileName"] as String
                         toLoad.length = song["length"] as Float
                         toLoad.lyrics = song["lyrics"] as String
@@ -47,6 +50,7 @@ class StartScript: NSObject {
         }
     }
     
+    // gets user info and adds to core data
     func getUserInfo() {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
@@ -62,7 +66,9 @@ class StartScript: NSObject {
             println("Error: \(error)")
         }
     }
-
+    
+    
+    // loads dummy data for friend from a plist. ( will further implement if we have time )
     func loadFriends(){
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext

@@ -21,6 +21,7 @@ class CustomFriendsCell: UICollectionViewCell {
         
     }
     
+    // init function for friends view
     func initWithFriend(name: String, image: UIImage) {
         
         self.friendImage.image = image

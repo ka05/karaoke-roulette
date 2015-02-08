@@ -26,18 +26,15 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     @IBOutlet var tableView: UITableView!
     
     // MARK: - Navigation Animations
+    
+    // Outlets for Navigation
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     
     var toggleBoolNavDown = false
     
-    
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
@@ -46,10 +43,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     }
     
     @IBAction func swipeNavUp(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
@@ -57,11 +51,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         toggleBoolNavDown = true
     }
     
+    // touch event to toggle navigation
     @IBAction func toggleNav(sender: UITapGestureRecognizer) {
-        println("touch toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
@@ -75,10 +67,9 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             
             toggleBoolNavDown = false
         }
-        
     }
-    // END:
     
+    // MARK: - Profile Image Handling
     
     // image tapped - set image from library or camera
     @IBAction func imgTapped(sender: UITapGestureRecognizer) {
@@ -89,13 +80,6 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     // pick photo from library
     func choosePhoto(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum){
-            println("Button capture")
-            // old code for picking photo - wasnt working before
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum;
-//            imagePicker.allowsEditing = false
-//            
-//            self.presentViewController(imagePicker, animated: true, completion: nil)
             
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             imagePicker.allowsEditing = false
@@ -108,7 +92,6 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     // shows camera ( front camera ) and handles taking photo
     func presentCamera(){
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera){
-            print("button capture")
             
             cameraUI = UIImagePickerController()
             cameraUI.delegate = self
@@ -121,15 +104,12 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         }
     }
     
-    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary)
-    {
+    func imagePickerController(picker:UIImagePickerController!, didFinishPickingMediaWithInfo info:NSDictionary){
         // Access the uncropped image from info dictionary
         var imageToSave: UIImage = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
         var imageToSave1: UIImage = info[UIImagePickerControllerOriginalImage] as UIImage //same but with different way
         
-        if(picker.sourceType == UIImagePickerControllerSourceType.Camera)
-        {
-            
+        if(picker.sourceType == UIImagePickerControllerSourceType.Camera){
             self.saveImageToCoreData(imageToSave)
             self.profileImageView.image = imageToSave
             
@@ -157,21 +137,22 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         }
     }
     
+    // func to handle saving image to core data in UserInfo object
     func saveImageToCoreData(imageToSave: UIImage){
-        //save to core data
+        // prepping image to save
         var fixedImg = fixOrientation(imageToSave)
         var dataImage = UIImagePNGRepresentation(fixedImg);
         
         // saving to core data
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext!
         
+        // fetch reqest
         let fetchRequest = NSFetchRequest(entityName:"UserInfo")
         var error: NSError?
-        
         var fetchedResults:NSArray = managedContext.executeFetchRequest(fetchRequest, error: &error)!
         
+        // if results in table
         if(fetchedResults.count > 0){
             println("found image")
             var res = fetchedResults[0] as NSManagedObject
@@ -181,6 +162,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             }
         }
         else{
+            
             let profileImageData = NSEntityDescription.entityForName("UserInfo", inManagedObjectContext: managedContext)
             let profileImageObject = NSManagedObject(entity: profileImageData!, insertIntoManagedObjectContext:managedContext)
             profileImageObject.setValue(dataImage, forKey: "profileImageData")
@@ -196,6 +178,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // alert user that the picture has been saved
     func savedImageAlert()
     {
         var alert:UIAlertView = UIAlertView()
@@ -222,18 +205,19 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         var fetchedResults:NSArray = managedContext.executeFetchRequest(fetchRequest, error: &error)!
         
+        // if user exists in core data
         if fetchedResults.count > 0 {
             var res = fetchedResults[0] as UserInfo
-//
             if let img = res.profileImageData as NSData?{
-                println("picture exitst")
+                
+                // photo exists in coredata
                 println("\(res.profileImageData)")
                 var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
                 image = sFunc_imageFixOrientation(image)
                 self.profileImageView.image = image
             }
             else{
-                println("no picture taken")
+                //no photo exists in core data yet
                 var img = UIImage(named: "profile100")
                 self.profileImageView.image = img
             }
@@ -377,11 +361,13 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - viewWillAppear functions
+    // MARK: - viewWillAppear
     override func viewWillAppear(animated: Bool) {
         setUserInfoInUI()
         loadUserVideos()
     }
+    
+    // MARK: - loading functions
     
     func setUserInfoInUI(){
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -407,6 +393,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
     }
     
+    // gets users videos from core data
     func loadUserVideos(){
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
@@ -471,7 +458,19 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         self.performSegueWithIdentifier("videoSegue", sender: nil)
     }
     
+    // func to handle coloring rows
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.row % 2 == 0)
+        {
+            cell.backgroundColor = orangeColorSpecial
+        }
+        else{
+            cell.backgroundColor = blueColorSpecial
+        }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+    }
     
+    // gets a song from video object given indexpath
     func getVideoForCell(indexPath: NSIndexPath) -> Song{
         var song:Song!
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate

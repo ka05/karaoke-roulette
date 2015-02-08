@@ -24,15 +24,11 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var navBar: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
-    
     var toggleBoolNavDown = false
     
+    // swipe down event to pull navigation ui down
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
@@ -40,11 +36,9 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         toggleBoolNavDown = true
     }
     
+    // swipe up event to roll navigation ui back up
     @IBAction func swipeNavUp(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
@@ -52,11 +46,9 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         toggleBoolNavDown = true
     }
     
+    // touch event to toggle navigation
     @IBAction func toggleNav(sender: UITapGestureRecognizer) {
-        println("touch toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
@@ -71,9 +63,8 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             toggleBoolNavDown = false
         }
     }
-    // END:
     
-    
+    // MARK: - viewDidLoad-WillAppear
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,6 +145,7 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         self.performSegueWithIdentifier("songsSegue", sender: nil)
     }
     
+    // func to handle coloring rows 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.row % 2 == 0)
         {

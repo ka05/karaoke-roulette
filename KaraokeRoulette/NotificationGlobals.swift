@@ -8,6 +8,7 @@
 
 import Foundation
 
+// notifaction keys
 let countdownNotificationKey = "com.KaraokeRoulette.countdown"
 let countdownStopNotificationKey = "com.KaraokeRoulette.countdownStop"
 let startTransitionNotificationKey = "com.KaraokeRoulette.startTransition"

@@ -9,20 +9,24 @@
 import Foundation
 import UIKit
 
+
 var MainQueue: dispatch_queue_t {
     return dispatch_get_main_queue()
 }
 
+// creates a document path to directory given fileName
 func createDocPath(fileName: String) -> String {
     let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
     let docs = dirPaths[0] as String
     return docs + "/" + fileName
 }
 
+// gets a random uuid
 func getRandID() -> String {
     return NSUUID().UUIDString
 }
 
+// custom navigation function to navigate from source VC to destination VC
 func customNavigateFromSourceViewController(source: UIViewController, toDestinationViewControllerWithIdentifier destinationIdentifier: String) {
     
     // If we crash here, it's because the identifier was not found in the storyboard
@@ -32,16 +36,3 @@ func customNavigateFromSourceViewController(source: UIViewController, toDestinat
     // If we crash on the next line, it's because the source view controller isn't inside a navigation controller
     navController!.setViewControllers([destinationController], animated: true)
 }
-
-//func prompt(message: String){
-//    var alert:UIAlertView = UIAlertView()
-//    alert.title = "Who are you?"
-//    alert.message = "Enter your name"
-//    alert.delegate = self
-//    alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-//    
-//    alert.addButtonWithTitle("Ok")
-//    alert.show()
-//    
-//}
-

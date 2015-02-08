@@ -12,6 +12,7 @@ import CoreData
 class Song: NSManagedObject {
 
     @NSManaged var artistName: String
+    @NSManaged var artistImageFileName: String
     @NSManaged var length: NSNumber
     @NSManaged var lyrics: String
     @NSManaged var songID: NSNumber
@@ -19,9 +20,10 @@ class Song: NSManagedObject {
     @NSManaged var fileName: String
     @NSManaged var video: NSSet
 
-    class func createInManagedObjectContext(moc: NSManagedObjectContext, artistName: String, fileName: String, length: Float, lyrics: String, songID: NSNumber, songTitle: String) -> Song {
+    class func createInManagedObjectContext(moc: NSManagedObjectContext, artistName: String, artistImageFileName: String, fileName: String, length: Float, lyrics: String, songID: NSNumber, songTitle: String) -> Song {
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("Song", inManagedObjectContext: moc) as Song
         newItem.artistName = artistName
+        newItem.artistImageFileName = artistImageFileName
         newItem.fileName = fileName
         newItem.length = length
         newItem.lyrics = lyrics
