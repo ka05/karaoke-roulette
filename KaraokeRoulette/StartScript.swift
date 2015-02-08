@@ -13,10 +13,17 @@ import CoreData
 
 class StartScript: NSObject {
     
-    func loadSongs() {
+    let appDelegate:AppDelegate?
+    let context:NSManagedObjectContext?
+    
+    override init() {
+        super.init()
         // get the managedobject context
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext
+    }
+    
+    func loadSongs() {
         
         // get the data to load
         if let path = NSBundle.mainBundle().pathForResource("Songs", ofType: "plist") {
@@ -43,29 +50,20 @@ class StartScript: NSObject {
                         if !context!.save(&error) {
                             println("Error: \(error)")
                         }
-                        println("\(toLoad) saved.")
                     }
-                }
-                
-                // check to see if they have been saved properly
-                let req = NSFetchRequest(entityName: "Song")
-                var error:NSError? = nil
-                let fetched = context?.executeFetchRequest(req, error: &error) as [NSManagedObject]?
-                
-                // check validity of query
-                if let results = fetched {
-                    for result in results {
-                        let song = result as? Song
-                        println("Id: \(song?.songID), Name: \(song?.songTitle)")
-                    }
-                } else {
-                    println("Errors: \(error)")
                 }
             }
         }
     }
     
     func getUserInfo() {
+        var toLoad = NSEntityDescription.insertNewObjectForEntityForName("UserInfo", inManagedObjectContext: context!) as UserInfo
+        toLoad.userName = NSUserName()
         
+        // insert into core data
+        var error:NSError? = nil
+        if !context!.save(&error) {
+            println("Error: \(error)")
+        }
     }
 }
