@@ -471,14 +471,17 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     
     
     func getVideoForCell(indexPath: NSIndexPath) -> Song{
+        var song:Song!
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: "Video")
         let predicate = NSPredicate(format: "songID == %@", self.userVideos[indexPath.row].songID)
         fetchRequest.predicate = predicate
         
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Song] {
+        if let fetchResults = context.executeFetchRequest(fetchRequest, error: nil) as? [Song] {
             song = fetchResults[0] as Song
-            return song
         }
+        return song
     }
     
     /*
