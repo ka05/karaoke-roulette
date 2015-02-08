@@ -22,18 +22,17 @@
     </entity>
     <entity name="Video" representedClassName="KaraokeRoulette.Video" syncable="YES">
         <attribute name="creationDateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="localID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="songID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="videoID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="videoName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoPath" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="video" inverseEntity="Song" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserInfo" inverseName="video" inverseEntity="UserInfo" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Friend" positionX="-207" positionY="45" width="128" height="88"/>
         <element name="Song" positionX="-326" positionY="149" width="128" height="148"/>
         <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
-        <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
-        <element name="Friend" positionX="-207" positionY="45" width="128" height="88"/>
+        <element name="Video" positionX="-324" positionY="-117" width="128" height="150"/>
     </elements>
 </model>

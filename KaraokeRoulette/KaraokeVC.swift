@@ -13,11 +13,13 @@ import MediaPlayer
 import CoreMedia
 import MobileCoreServices
 import AVFoundation
+import CoreData
 
 class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudioPlayerDelegate {
     
     let session = AVCaptureSession()
-    var curFilePath:String?
+    var videoID:String!
+    var curFilePath:String!
     var curFileURL:NSURL?
     var preview:AVCaptureVideoPreviewLayer?
     var videoDevice:AVCaptureDevice?
@@ -32,6 +34,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     var times:[Double]!
     var countdown = 5
     var lineIndex = 0
+    var shouldSave = false
     
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var textView: UIView!
@@ -187,45 +190,23 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         session.addOutput(movieOutput)
     }
     
-    // delegate function, called when recording starts
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
-        println("I am recording")
-    }
-    
-    // delegate function, called when recording completes
-    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-        println("I recorded succesfully")
-        var recordSuccess = true
-        
-        // error checking
-        if error != nil {
-            let code = error.userInfo?[AVErrorRecordingSuccessfullyFinishedKey] as Bool
-            if code {
-                recordSuccess = code
-            }
-        }
-        
-        if recordSuccess {
-            println("File was saved succesffuly")
-        }
-    }
-    
     // starts recording to the documents directory
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
-            curFilePath = createDocPath(getRandID()) + ".mov"
-            curFileURL = NSURL(fileURLWithPath: curFilePath!)
+            videoID = getRandID()
+            curFilePath = createDocPath(videoID) + ".mov"
+            curFileURL = NSURL(fileURLWithPath: curFilePath)
             let fileManager = NSFileManager.defaultManager()
             
             // check to see if it exists
-            if fileManager.fileExistsAtPath(curFilePath!) {
+            if fileManager.fileExistsAtPath(curFilePath) {
                 var err:NSError?
-                if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
+                if !fileManager.removeItemAtPath(curFilePath, error: &err) {
                     println("Error removing file")
                 }
             }
             // start recording to file url
-            movieOutput?.startRecordingToOutputFileURL(curFileURL!, recordingDelegate: self)
+            movieOutput?.startRecordingToOutputFileURL(curFileURL, recordingDelegate: self)
 
             // change button and state
             startStopButton.setTitle("Stop Song", forState: UIControlState.Normal)
@@ -238,13 +219,56 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         // change button and state
         startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
         isRecording = false
+        shouldSave = false
         movieOutput?.stopRecording()
         session.stopRunning()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func beginCountdown() {
         countdown = 5
         startRecording()
+    }
+    
+    // MARK: Core Data
+    
+    // write the video to core data
+    func writeToCore() {
+        let userID = getUserID() // get the user's ID
+        
+        // Prep core
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Video", inManagedObjectContext: context!) as Video
+        
+        // prep attributes
+        toLoad.creationDateTime = NSDate()
+        toLoad.videoID = videoID
+        toLoad.songID = song.songID
+        toLoad.videoPath = curFilePath
+        toLoad.userID = userID
+        
+        // save
+        var error:NSError? = nil
+        if !context!.save(&error) {
+            println("Error: \(error)")
+        }
+    }
+    
+    // get the user id
+    func getUserID() -> String {
+        var userID:String!
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext!
+        let req = NSFetchRequest(entityName: "Song")
+        var error:NSError? = nil
+        let fetched:NSArray = context.executeFetchRequest(req, error: &error)!
+        
+        if fetched.count > 0 {
+            let user = fetched[0] as UserInfo
+            userID = user.userID
+        }
+        return userID
     }
     
     // MARK: MP3 Playback
@@ -272,9 +296,51 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         audioPlayer?.play()
     }
     
+    // MARK: AVCaptureFileOutputRecordingDelegate
+    
+    // delegate function, called when recording starts
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
+        println("Video Recording")
+    }
+    
+    // delegate function, called when recording completes
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+        println("I recorded succesfully")
+        var recordSuccess = true
+        
+        // error checking
+        if error != nil {
+            let code = error.userInfo?[AVErrorRecordingSuccessfullyFinishedKey] as Bool
+            if code {
+                recordSuccess = code
+            }
+        }
+        
+        // check for recording success
+        if recordSuccess {
+            
+            // delete file if recording was interrupted
+            if shouldSave {
+                println("File was saved succesfully")
+                writeToCore()
+            } else {
+                // delete the file that was saved
+                let fileManager = NSFileManager.defaultManager()
+                if fileManager.fileExistsAtPath(curFilePath!) {
+                    var err:NSError?
+                    if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
+                        println("Error removing disrupted file")
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: AVAudioPlayerDelegate
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         NSNotificationCenter.defaultCenter().postNotificationName(stopSongTimingNotificationKey, object: self)
+        shouldSave = true
+        stopRecording()
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {

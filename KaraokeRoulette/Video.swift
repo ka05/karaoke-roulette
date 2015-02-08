@@ -12,11 +12,10 @@ import CoreData
 class Video: NSManagedObject {
 
     @NSManaged var creationDateTime: NSDate
-    @NSManaged var localID: NSNumber
+    @NSManaged var videoID: String
     @NSManaged var songID: NSNumber
-    @NSManaged var userID: NSNumber
-    @NSManaged var videoID: NSNumber
-    @NSManaged var videoName: String
+    @NSManaged var userID: String
+    @NSManaged var videoPath: String
     @NSManaged var user: UserInfo
     @NSManaged var song: Song
 

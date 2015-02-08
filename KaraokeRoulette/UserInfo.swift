@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Herendeen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class UserInfo: NSManagedObject {
@@ -15,5 +15,5 @@ class UserInfo: NSManagedObject {
     @NSManaged var userID: String
     @NSManaged var profileImageData: NSData
     @NSManaged var video: NSSet
-
+    
 }
