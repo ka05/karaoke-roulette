@@ -12,6 +12,7 @@ import CoreData
 class UserInfo: NSManagedObject {
 
     @NSManaged var userName: String
+    @NSManaged var userID: String
     @NSManaged var profileImageData: NSData
     @NSManaged var video: NSSet
 

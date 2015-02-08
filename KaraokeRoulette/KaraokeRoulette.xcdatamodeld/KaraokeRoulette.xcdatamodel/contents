@@ -11,6 +11,7 @@
     </entity>
     <entity name="UserInfo" representedClassName="KaraokeRoulette.UserInfo" syncable="YES">
         <attribute name="profileImageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="user" inverseEntity="Video" syncable="YES"/>
     </entity>
@@ -26,7 +27,7 @@
     </entity>
     <elements>
         <element name="Song" positionX="-326" positionY="149" width="128" height="148"/>
-        <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="88"/>
+        <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
     </elements>
 </model>
