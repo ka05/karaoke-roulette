@@ -18,47 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        // check to see if this is first time opening application
-        // saving to core data
+        // get the managed context to see if core data has been initialized
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        
         let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName:"Initialize")
+        var req = NSFetchRequest(entityName: "Song")
         var error: NSError?
         
-        var fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)!
+        // fetch results
+        var fetchedResults = managedContext.executeFetchRequest(req, error: &error) as [NSManagedObject]?
         
-        if(fetchedResults.count > 0){
-            // user has opened app before
-            // do nothing so far
-            println("already been opened")
-            
-            
-            
-        } else{
-            // user hasnt opened app before
-            // run startup script
-            println("First time opened")
-            
-            let entity =  NSEntityDescription.entityForName("Initialize", inManagedObjectContext: managedContext)
-            let initializedVal = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-            initializedVal.setValue(true, forKey: "initialized")
-            
-            var error: NSError?
-            if !managedContext.save(&error) {
-                println("Could not save \(error), \(error?.userInfo)")
+        // see if app has been opened before
+        if let results = fetchedResults {
+            if results.count > 0 {
+                println("Core data already loaded")
+            } else {
+                let startScript = StartScript()
+                startScript.loadSongs()
+                startScript.getUserInfo()
             }
-
-            
-            var start = StartScript()
-            start.loadInMp3AndUserInfo()
         }
-        
-        
-        
-        
         return true
     }
 

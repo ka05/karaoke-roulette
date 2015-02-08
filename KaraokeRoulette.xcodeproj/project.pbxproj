@@ -12,7 +12,7 @@
 		0834BFB41A871CC100C6FDD0 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB31A871CC100C6FDD0 /* Song.swift */; };
 		0834BFB61A871CC100C6FDD0 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB51A871CC100C6FDD0 /* Video.swift */; };
 		0834BFB81A871CC100C6FDD0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB71A871CC100C6FDD0 /* UserInfo.swift */; };
-		0834BFBA1A871CC100C6FDD0 /* Initialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834BFB91A871CC100C6FDD0 /* Initialize.swift */; };
+		0834BFD41A87A85100C6FDD0 /* Songs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0834BFD31A87A85100C6FDD0 /* Songs.plist */; };
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
 		089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A21A858181001FBE6E /* SongTimer.swift */; };
 		089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A41A85A1E6001FBE6E /* Navigation.swift */; };
@@ -71,7 +71,7 @@
 		0834BFB31A871CC100C6FDD0 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		0834BFB51A871CC100C6FDD0 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		0834BFB71A871CC100C6FDD0 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		0834BFB91A871CC100C6FDD0 /* Initialize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initialize.swift; sourceTree = "<group>"; };
+		0834BFD31A87A85100C6FDD0 /* Songs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Songs.plist; sourceTree = "<group>"; };
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
 		089FF7A21A858181001FBE6E /* SongTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTimer.swift; sourceTree = "<group>"; };
 		089FF7A41A85A1E6001FBE6E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 		080A1B2E1A86D2C0006DE962 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				0834BFB91A871CC100C6FDD0 /* Initialize.swift */,
 				0834BFB71A871CC100C6FDD0 /* UserInfo.swift */,
 				0834BFB51A871CC100C6FDD0 /* Video.swift */,
 				0834BFB31A871CC100C6FDD0 /* Song.swift */,
@@ -268,6 +267,7 @@
 				1870433F1A87038300E6F33F /* lrc */,
 				1870433D1A87036800E6F33F /* img */,
 				18C73FD01A855EF800B7C1A7 /* Info.plist */,
+				0834BFD31A87A85100C6FDD0 /* Songs.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -423,6 +423,7 @@
 				187043601A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 in Resources */,
 				18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */,
 				18470EF51A86E7F100F9716F /* orange-record-circle.png in Resources */,
+				0834BFD41A87A85100C6FDD0 /* Songs.plist in Resources */,
 				1870435E1A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 in Resources */,
 				18470EF31A86E70200F9716F /* default-placeholder.png in Resources */,
 				18470EDB1A85BF7500F9716F /* profilepicture.svg in Resources */,
@@ -451,7 +452,6 @@
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
 				18470EFD1A86EEEA00F9716F /* MashupVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
-				0834BFBA1A871CC100C6FDD0 /* Initialize.swift in Sources */,
 				18470EFA1A86E8A000F9716F /* CustomFriendsCell.swift in Sources */,
 				18470EEC1A86D80F00F9716F /* CustomVideoCell.swift in Sources */,
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
