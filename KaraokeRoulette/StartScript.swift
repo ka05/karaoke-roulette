@@ -53,6 +53,7 @@ class StartScript: NSObject {
         var toLoad = NSEntityDescription.insertNewObjectForEntityForName("UserInfo", inManagedObjectContext: context!) as UserInfo
         toLoad.userName = NSUserName()
         toLoad.userID = NSUUID().UUIDString
+        toLoad.userNumSongsCompleted = 0
         
         // insert into core data
         var error:NSError? = nil
