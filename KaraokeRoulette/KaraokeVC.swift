@@ -16,6 +16,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     let session = AVCaptureSession()
     var curFilePath:String?
+    var curFileURL:NSURL?
     var preview:AVCaptureVideoPreviewLayer?
     var videoDevice:AVCaptureDevice?
     var audioDevice:AVCaptureDevice?
@@ -107,17 +108,25 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         println("I recorded succesfully")
+        var recordSuccess = true
         
         // error checking
         if error != nil {
-            let code = error.userInfo
+            let code = error.userInfo?[AVErrorRecordingSuccessfullyFinishedKey] as Bool
+            if code {
+                recordSuccess = code
+            }
+        }
+        
+        if recordSuccess {
+            println("File was saved succesffuly")
         }
     }
     
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
             curFilePath = createDocPath(getRandID()) + ".mov"
-            let outputURL = NSURL(fileURLWithPath: curFilePath!)
+            curFileURL = NSURL(fileURLWithPath: curFilePath!)
             let fileManager = NSFileManager.defaultManager()
             
             // check to see if it exists
@@ -128,7 +137,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 }
             }
             // start recording to file url
-            movieOutput?.startRecordingToOutputFileURL(outputURL, recordingDelegate: self)
+            movieOutput?.startRecordingToOutputFileURL(curFileURL!, recordingDelegate: self)
 
             // change button and state
             startStopButton.setTitle("Stop Song", forState: UIControlState.Normal)
