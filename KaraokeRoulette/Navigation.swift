@@ -29,7 +29,7 @@ import UIKit
     }
     
     @IBAction func profileLink(sender: AnyObject) {
-        if let songsTable = sourceVC as? ProfileVC{
+        if let profile = sourceVC as? ProfileVC{
             return
         }
         else{
@@ -39,7 +39,7 @@ import UIKit
     }
     
     @IBAction func friendsLink(sender: AnyObject) {
-        if let songsTable = sourceVC as? FriendsVC{
+        if let friends = sourceVC as? FriendsVC{
             return
         }
         else{
@@ -49,7 +49,7 @@ import UIKit
     }
     
     @IBAction func aboutLink(sender: AnyObject) {
-        if let songsTable = sourceVC as? AboutVC{
+        if let about = sourceVC as? AboutVC{
             return
         }
         else{

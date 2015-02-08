@@ -57,12 +57,16 @@
                         <action selector="aboutLink:" destination="-1" eventType="touchUpInside" id="hl8-RB-v0r"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mobilemenu.png" translatesAutoresizingMaskIntoConstraints="NO" id="ipi-Te-8Lq">
+                    <rect key="frame" x="552" y="235" width="47" height="40"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.094117647058823528" green="0.75686274509803919" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="IXn-Vx-Z0P" firstAttribute="top" secondItem="HIc-4t-v5F" secondAttribute="bottom" constant="35" id="0wL-ki-FIa"/>
                 <constraint firstAttribute="bottom" secondItem="IXn-Vx-Z0P" secondAttribute="bottom" constant="10" id="2xe-Va-EVB"/>
                 <constraint firstItem="lla-XK-9KQ" firstAttribute="top" secondItem="mKF-Ev-ebi" secondAttribute="bottom" constant="8" symbolic="YES" id="BA5-aa-pV3"/>
+                <constraint firstAttribute="trailing" secondItem="ipi-Te-8Lq" secondAttribute="trailing" constant="8" id="GEa-ue-jLi"/>
                 <constraint firstItem="HIc-4t-v5F" firstAttribute="top" secondItem="fcx-HG-3g0" secondAttribute="bottom" constant="8" id="Odz-bm-ziW"/>
                 <constraint firstItem="mKF-Ev-ebi" firstAttribute="centerX" secondItem="HIc-4t-v5F" secondAttribute="centerX" id="PM6-Bx-1e6"/>
                 <constraint firstItem="mKF-Ev-ebi" firstAttribute="centerX" secondItem="lla-XK-9KQ" secondAttribute="centerX" id="amC-kL-N64"/>
@@ -70,6 +74,7 @@
                 <constraint firstItem="mKF-Ev-ebi" firstAttribute="centerX" secondItem="fcx-HG-3g0" secondAttribute="centerX" id="kVW-md-xGP"/>
                 <constraint firstAttribute="centerX" secondItem="IXn-Vx-Z0P" secondAttribute="centerX" id="lTI-nc-war"/>
                 <constraint firstItem="fcx-HG-3g0" firstAttribute="top" secondItem="lla-XK-9KQ" secondAttribute="bottom" constant="8" id="p4O-mU-5Jv"/>
+                <constraint firstAttribute="bottom" secondItem="ipi-Te-8Lq" secondAttribute="bottom" constant="8" id="vnw-vV-bWv"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -77,6 +82,7 @@
         </view>
     </objects>
     <resources>
+        <image name="mobilemenu.png" width="40" height="40"/>
         <image name="roulette_nav.png" width="167" height="38"/>
     </resources>
 </document>
