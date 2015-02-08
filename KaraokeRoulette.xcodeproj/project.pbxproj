@@ -23,6 +23,11 @@
 		18470EED1A86D80F00F9716F /* CustomVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18470EEB1A86D80F00F9716F /* CustomVideoCell.xib */; };
 		18470EEF1A86E0E600F9716F /* mobilemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 18470EEE1A86E0E600F9716F /* mobilemenu.png */; };
 		18470EF11A86E33700F9716F /* SongsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18470EF01A86E33700F9716F /* SongsDetailVC.swift */; };
+		18470EF31A86E70200F9716F /* default-placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 18470EF21A86E70200F9716F /* default-placeholder.png */; };
+		18470EF51A86E7F100F9716F /* orange-record-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 18470EF41A86E7F100F9716F /* orange-record-circle.png */; };
+		18470EFA1A86E8A000F9716F /* CustomFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18470EF81A86E8A000F9716F /* CustomFriendsCell.swift */; };
+		18470EFB1A86E8A000F9716F /* CustomFriendsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18470EF91A86E8A000F9716F /* CustomFriendsCell.xib */; };
+		18470EFD1A86EEEA00F9716F /* MashupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18470EFC1A86EEEA00F9716F /* MashupVC.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
 		18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD61A855EF800B7C1A7 /* ViewController.swift */; };
@@ -67,6 +72,11 @@
 		18470EEB1A86D80F00F9716F /* CustomVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomVideoCell.xib; sourceTree = "<group>"; };
 		18470EEE1A86E0E600F9716F /* mobilemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobilemenu.png; sourceTree = "<group>"; };
 		18470EF01A86E33700F9716F /* SongsDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsDetailVC.swift; sourceTree = "<group>"; };
+		18470EF21A86E70200F9716F /* default-placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default-placeholder.png"; sourceTree = "<group>"; };
+		18470EF41A86E7F100F9716F /* orange-record-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-record-circle.png"; sourceTree = "<group>"; };
+		18470EF81A86E8A000F9716F /* CustomFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFriendsCell.swift; sourceTree = "<group>"; };
+		18470EF91A86E8A000F9716F /* CustomFriendsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFriendsCell.xib; sourceTree = "<group>"; };
+		18470EFC1A86EEEA00F9716F /* MashupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MashupVC.swift; sourceTree = "<group>"; };
 		18C73FCC1A855EF800B7C1A7 /* KaraokeRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaraokeRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +135,8 @@
 				18C73FF41A85634E00B7C1A7 /* Navigation.xib */,
 				18470EEA1A86D80F00F9716F /* CustomVideoCell.swift */,
 				18470EEB1A86D80F00F9716F /* CustomVideoCell.xib */,
+				18470EF81A86E8A000F9716F /* CustomFriendsCell.swift */,
+				18470EF91A86E8A000F9716F /* CustomFriendsCell.xib */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -187,6 +199,8 @@
 		18C73FCF1A855EF800B7C1A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				18470EF41A86E7F100F9716F /* orange-record-circle.png */,
+				18470EF21A86E70200F9716F /* default-placeholder.png */,
 				18470EEE1A86E0E600F9716F /* mobilemenu.png */,
 				18470EDA1A85BF7500F9716F /* profilepicture.svg */,
 				18C740061A85861000B7C1A7 /* roulette_main.svg */,
@@ -240,6 +254,7 @@
 				18C740021A856AB300B7C1A7 /* AboutVC.swift */,
 				083190B21A85B5E8004B9A25 /* KaraokeVC.swift */,
 				18470EF01A86E33700F9716F /* SongsDetailVC.swift */,
+				18470EFC1A86EEEA00F9716F /* MashupVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -334,9 +349,12 @@
 				18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */,
 				18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */,
 				18C740091A85861000B7C1A7 /* roulette_nav.svg in Resources */,
+				18470EFB1A86E8A000F9716F /* CustomFriendsCell.xib in Resources */,
 				18C73FDC1A855EF800B7C1A7 /* Images.xcassets in Resources */,
 				18470EED1A86D80F00F9716F /* CustomVideoCell.xib in Resources */,
 				18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */,
+				18470EF51A86E7F100F9716F /* orange-record-circle.png in Resources */,
+				18470EF31A86E70200F9716F /* default-placeholder.png in Resources */,
 				18470EDB1A85BF7500F9716F /* profilepicture.svg in Resources */,
 				18C73FF51A85634E00B7C1A7 /* Navigation.xib in Resources */,
 				18470EEF1A86E0E600F9716F /* mobilemenu.png in Resources */,
@@ -360,7 +378,9 @@
 			files = (
 				080A1B381A86D2F8006DE962 /* Song.swift in Sources */,
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
+				18470EFD1A86EEEA00F9716F /* MashupVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
+				18470EFA1A86E8A000F9716F /* CustomFriendsCell.swift in Sources */,
 				18470EEC1A86D80F00F9716F /* CustomVideoCell.swift in Sources */,
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,

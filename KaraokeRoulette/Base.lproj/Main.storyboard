@@ -87,7 +87,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="733" y="875"/>
+            <point key="canvasLocation" x="779" y="734"/>
         </scene>
         <!--Songs TableVC-->
         <scene sceneID="wVy-fH-TLE">
@@ -159,7 +159,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="805" y="-677"/>
+            <point key="canvasLocation" x="779" y="-709"/>
         </scene>
         <!--Karaoke-->
         <scene sceneID="jrC-qA-gda">
@@ -233,7 +233,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FA-1N-MVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="754" y="55"/>
+            <point key="canvasLocation" x="779" y="7"/>
         </scene>
         <!--AboutVC-->
         <scene sceneID="qVc-E4-kXI">
@@ -313,13 +313,116 @@
                     <view key="view" contentMode="scaleToFill" id="Xgh-qB-SCo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ7-3w-0cT">
+                                <rect key="frame" x="189" y="85" width="395" height="70"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xn-Fk-OxY">
+                                <rect key="frame" x="189" y="163" width="395" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lyrics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-lM-eDH">
+                                <rect key="frame" x="16" y="243" width="568" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Dr-no-uMk">
+                                <rect key="frame" x="16" y="85" width="165" height="150"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-nS-sak">
+                                <rect key="frame" x="16" y="305" width="568" height="185"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nw1-3H-aJy">
+                                <rect key="frame" x="259" y="498" width="82" height="82"/>
+                                <state key="normal" image="orange-record-circle.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="M1C-jV-A0h"/>
+                    <connections>
+                        <outlet property="artistImage" destination="8Dr-no-uMk" id="T7y-Nn-wIU"/>
+                        <outlet property="artistLabel" destination="YZ7-3w-0cT" id="Tbs-Kt-ILf"/>
+                        <outlet property="songTitleLabel" destination="7Xn-Fk-OxY" id="L0n-hh-sb2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgC-jB-giJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2556" y="-677"/>
+            <point key="canvasLocation" x="2388" y="-709"/>
+        </scene>
+        <!--MashupVC-->
+        <scene sceneID="gEc-ES-xKB">
+            <objects>
+                <viewController id="ulZ-rU-7oz" customClass="MashupVC" customModule="KaraokeRoulette" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y7C-LT-R1b"/>
+                        <viewControllerLayoutGuide type="bottom" id="d54-2q-fSr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aHe-Qj-h76">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fse-vS-quy">
+                                <rect key="frame" x="2" y="67" width="295" height="265"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N11-Ru-h96">
+                                <rect key="frame" x="305" y="67" width="295" height="265"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5Z-wR-fII">
+                                <rect key="frame" x="305" y="335" width="295" height="265"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-mU-Ir9">
+                                <rect key="frame" x="2" y="335" width="295" height="265"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="width" secondItem="F9b-mU-Ir9" secondAttribute="width" id="0Ov-V9-Inw"/>
+                            <constraint firstItem="N11-Ru-h96" firstAttribute="leading" secondItem="Fse-vS-quy" secondAttribute="trailing" constant="8" symbolic="YES" id="6G3-Xn-deR"/>
+                            <constraint firstAttribute="trailing" secondItem="N11-Ru-h96" secondAttribute="trailing" id="8qA-5y-3iD"/>
+                            <constraint firstItem="d54-2q-fSr" firstAttribute="top" secondItem="N11-Ru-h96" secondAttribute="bottom" constant="268" id="AWf-Qo-5CP"/>
+                            <constraint firstItem="N11-Ru-h96" firstAttribute="bottom" secondItem="Fse-vS-quy" secondAttribute="bottom" id="Cgl-VR-ljC"/>
+                            <constraint firstItem="N11-Ru-h96" firstAttribute="top" secondItem="y7C-LT-R1b" secondAttribute="bottom" constant="8" symbolic="YES" id="E94-QM-ToQ"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="width" secondItem="Fse-vS-quy" secondAttribute="width" id="KqV-Fz-c2p"/>
+                            <constraint firstItem="F9b-mU-Ir9" firstAttribute="centerX" secondItem="Fse-vS-quy" secondAttribute="centerX" id="LwE-5z-Q9x"/>
+                            <constraint firstItem="F9b-mU-Ir9" firstAttribute="top" secondItem="h5Z-wR-fII" secondAttribute="top" id="MRB-qX-LCN"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="width" secondItem="N11-Ru-h96" secondAttribute="width" id="YM7-ed-f82"/>
+                            <constraint firstItem="N11-Ru-h96" firstAttribute="top" secondItem="Fse-vS-quy" secondAttribute="top" id="ZKL-EZ-3zM"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="leading" secondItem="F9b-mU-Ir9" secondAttribute="trailing" constant="8" symbolic="YES" id="eok-c4-Yhn"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="height" secondItem="Fse-vS-quy" secondAttribute="height" id="hk3-j8-j3b"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="height" secondItem="N11-Ru-h96" secondAttribute="height" id="i2S-ck-yzC"/>
+                            <constraint firstItem="N11-Ru-h96" firstAttribute="leading" secondItem="aHe-Qj-h76" secondAttribute="leading" constant="305" id="l6p-hM-Rxq"/>
+                            <constraint firstItem="h5Z-wR-fII" firstAttribute="height" secondItem="F9b-mU-Ir9" secondAttribute="height" id="uUN-wh-Ac2"/>
+                            <constraint firstItem="F9b-mU-Ir9" firstAttribute="bottom" secondItem="d54-2q-fSr" secondAttribute="top" id="xd9-sJ-egs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7wz-DW-nUt"/>
+                    <connections>
+                        <outlet property="quadrant1" destination="Fse-vS-quy" id="VQ6-Uc-HG0"/>
+                        <outlet property="quadrant2" destination="N11-Ru-h96" id="a4r-NI-0dY"/>
+                        <outlet property="quadrant3" destination="F9b-mU-Ir9" id="cyT-vN-sgy"/>
+                        <outlet property="quadrant4" destination="h5Z-wR-fII" id="Z8n-s6-EI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHA-qa-ggr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3951" y="-709"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="Rzn-cB-OMo">
@@ -452,7 +555,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="771" y="-1415"/>
+            <point key="canvasLocation" x="771" y="-1423"/>
         </scene>
         <!--aboutNavigationController-->
         <scene sceneID="JIl-IT-eWc">
@@ -488,7 +591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56g-TZ-dea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41" y="-1415"/>
+            <point key="canvasLocation" x="-49" y="-1423"/>
         </scene>
         <!--karaokeNavigationController-->
         <scene sceneID="w0j-DD-VDA">
@@ -506,7 +609,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oBK-wI-rVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="55"/>
+            <point key="canvasLocation" x="-49" y="7"/>
         </scene>
         <!--friendsNavigationController-->
         <scene sceneID="VcD-Dl-Pkf">
@@ -524,7 +627,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WVL-aH-0IX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="862"/>
+            <point key="canvasLocation" x="-49" y="734"/>
         </scene>
         <!--Songs Tablenavigation Controller-->
         <scene sceneID="8Ub-it-DOq">
@@ -542,7 +645,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mLG-fP-KJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="-677"/>
+            <point key="canvasLocation" x="-49" y="-709"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s1b-vD-7kF">
@@ -560,7 +663,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OSs-2u-ysU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1744" y="-677"/>
+            <point key="canvasLocation" x="1640" y="-709"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="phg-bS-zA5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ghl-XN-zJk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ye8-m6-VxR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ulZ-rU-7oz" kind="relationship" relationship="rootViewController" id="5p2-Iz-XdM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uxd-nk-P8H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3139" y="-709"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="default-placeholder.png" width="1500" height="1500"/>
+        <image name="orange-record-circle.png" width="200" height="200"/>
+    </resources>
 </document>

@@ -1,5 +1,5 @@
 //
-//  SongsDetailVC.swift
+//  MashupVC.swift
 //  KaraokeRoulette
 //
 //  Created by Apple on 2/7/15.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SongsDetailVC: UIViewController {
+class MashupVC: UIViewController {
 
-    @IBOutlet weak var artistImage: UIImageView!
-    @IBOutlet weak var artistLabel: UILabel!
-    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var quadrant1: UIView!
+    @IBOutlet weak var quadrant2: UIView!
+    @IBOutlet weak var quadrant3: UIView!
+    @IBOutlet weak var quadrant4: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
