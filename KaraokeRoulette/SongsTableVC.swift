@@ -160,6 +160,7 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         else{
             cell.backgroundColor = blueColorSpecial
         }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
     }
 
     /*
