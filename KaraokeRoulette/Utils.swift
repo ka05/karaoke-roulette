@@ -33,15 +33,15 @@ func customNavigateFromSourceViewController(source: UIViewController, toDestinat
     navController!.setViewControllers([destinationController], animated: true)
 }
 
-func prompt(message: String){
-    var alert:UIAlertView = UIAlertView()
-    alert.title = "Who are you?"
-    alert.message = "Enter your name"
-    alert.delegate = self
-    alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-    
-    alert.addButtonWithTitle("Ok")
-    alert.show()
-    
-}
+//func prompt(message: String){
+//    var alert:UIAlertView = UIAlertView()
+//    alert.title = "Who are you?"
+//    alert.message = "Enter your name"
+//    alert.delegate = self
+//    alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+//    
+//    alert.addButtonWithTitle("Ok")
+//    alert.show()
+//    
+//}
 
