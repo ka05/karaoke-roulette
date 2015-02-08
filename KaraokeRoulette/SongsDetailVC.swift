@@ -9,14 +9,21 @@
 import UIKit
 
 class SongsDetailVC: UIViewController {
-
+    var song:Song!
+    
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var songLyricsTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        artistLabel.text = song.artistName
+        songTitleLabel.text = song.songTitle
+        songLyricsTextView.text = song.lyrics
+        
     }
 
     override func didReceiveMemoryWarning() {

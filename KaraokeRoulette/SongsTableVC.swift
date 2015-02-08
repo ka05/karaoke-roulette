@@ -8,10 +8,12 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tempItems:[String] = ["song 1", "song2", "song3"]
+    var songsArray: [Song] = [Song]()
     
     @IBOutlet weak var nav: UIView!
     
@@ -84,6 +86,23 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "songsCell")
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        let req = NSFetchRequest(entityName: "Song")
+        var error:NSError? = nil
+        let fetched = context?.executeFetchRequest(req, error: &error) as [NSManagedObject]?
+        
+        // check validity of query
+        if let results = fetched {
+            for result in results {
+                songsArray.append(result as Song)
+            }
+        } else {
+            println("Errors: \(error)")
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,30 +120,47 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return self.tempItems.count
+        return self.songsArray.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        tableView.backgroundView = nil;
+        tableView.backgroundColor = UIColor.blackColor()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
         // Configure the cell...
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("songsCell") as UITableViewCell
         
-        cell.textLabel?.text = self.tempItems[indexPath.row]
+        cell.textLabel?.text = self.songsArray[indexPath.row].songTitle
+        cell.detailTextLabel?.text = self.songsArray[indexPath.row].artistName
         
         return cell
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        let index = tableView.indexPathForSelectedRow()
-//        pizza.pizzaType = pizza.typeList[index.row]
-//        if segue.identifier == "toEdit" {
-//            let vc = segue.destinationViewController as PizzaTypePriceVC
-//            vc.pizzaType = pizza.pizzaType
-//            vc.pizzaPrice = pizza.unitPrice()
-//        }
-//    }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let index = tableView.indexPathForSelectedRow()
+        let song = songsArray[(index?.row)!]
+        
+        if segue.identifier == "songsSegue" {
+            let vc = segue.destinationViewController as SongsDetailVC
+            vc.song = song
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("songsSegue", sender: nil)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (indexPath.row % 2 == 0)
+        {
+            cell.backgroundColor = orangeColorSpecial
+        }
+        else{
+            cell.backgroundColor = blueColorSpecial
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

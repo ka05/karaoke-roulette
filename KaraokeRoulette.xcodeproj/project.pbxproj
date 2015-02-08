@@ -38,6 +38,7 @@
 		1870435E1A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 187043591A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 */; };
 		1870435F1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1870435A1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 */; };
 		187043601A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1870435B1A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 */; };
+		187043621A87CF1300E6F33F /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187043611A87CF1300E6F33F /* Interface.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
 		18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD61A855EF800B7C1A7 /* ViewController.swift */; };
@@ -97,6 +98,7 @@
 		187043591A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3"; sourceTree = "<group>"; };
 		1870435A1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shake_It_off-Taylor_Swift].mp3"; sourceTree = "<group>"; };
 		1870435B1A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sweet_Child_O'Mine-Guns_N'_Roses.mp3"; sourceTree = "<group>"; };
+		187043611A87CF1300E6F33F /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
 		18C73FCC1A855EF800B7C1A7 /* KaraokeRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaraokeRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				18470EE61A86C98600F9716F /* Utils.swift */,
 				083190AE1A85ACF8004B9A25 /* NotificationGlobals.swift */,
+				187043611A87CF1300E6F33F /* Interface.swift */,
 			);
 			name = Globals;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				18470EF11A86E33700F9716F /* SongsDetailVC.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
+				187043621A87CF1300E6F33F /* Interface.swift in Sources */,
 				0834BFB81A871CC100C6FDD0 /* UserInfo.swift in Sources */,
 				18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */,
 			);
