@@ -12,16 +12,18 @@ import MobileCoreServices
 import CoreData
 import Photos
 
-class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource{
+
+    var userVideos: [Video] = [Video]()
     var imagePicker = UIImagePickerController()
-    
+    var user: UserInfo!
     var cameraUI: UIImagePickerController! = UIImagePickerController()
     
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userNumSongsLabel: UILabel!
-    
+    @IBOutlet var tableView: UITableView!
     
     // MARK: - Navigation Animations
     @IBOutlet weak var nav: Navigation!
@@ -230,6 +232,10 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
 //            image = sFunc_imageFixOrientation(image)
 //            self.profileImageView.image = image
         }
+        else{
+//            var img = UIImage("profileImage")
+//            self.profileImageView.image = img
+        }
     }
     
     
@@ -344,9 +350,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             self.presentCamera()
         }))
         
-        
         self.presentViewController(alert, animated: true, completion: nil)
-        
     }
 
     // sets username label
@@ -363,9 +367,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         setImgProp()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -373,6 +375,111 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - viewWillAppear functions
+    override func viewWillAppear(animated: Bool) {
+        setUserInfoInUI()
+        loadUserVideos()
+    }
+    
+    func setUserInfoInUI(){
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        let req = NSFetchRequest(entityName: "UserInfo")
+        var error:NSError? = nil
+        let fetched = context?.executeFetchRequest(req, error: &error) as [UserInfo]?
+        
+        // check validity of query
+        if let results = fetched {
+            for result in results {
+                user = result as UserInfo
+            }
+        } else {
+            println("Errors: \(error)")
+        }
+        
+        userNameLabel.text = user.userName as String
+        
+        var numSongsCompleted = user.userNumSongsCompleted as Int
+        var numSongsCompletedString = String(numSongsCompleted)
+        userNumSongsLabel.text = numSongsCompletedString + " Songs Completed"
+        
+    }
+    
+    func loadUserVideos(){
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let context = appDelegate.managedObjectContext
+        let req = NSFetchRequest(entityName: "Video")
+        var error:NSError? = nil
+        let fetched = context?.executeFetchRequest(req, error: &error) as [Video]?
+        
+        // check validity of query
+        if let results = fetched {
+            for result in results {
+                userVideos.append(result as Video)
+            }
+        } else {
+            println("Errors: \(error)")
+        }
+    }
+    
+    // MARK: - Table view data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
+        return self.userVideos.count
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        tableView.backgroundView = nil;
+        tableView.backgroundColor = charcoalColorSpecial
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        // Configure the cell...
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("videoCell") as UITableViewCell
+        
+        cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "videoCell")
+        
+        // call getVideo to get song corresponding to video
+        var song = getVideoForCell(indexPath)
+        
+        cell.textLabel?.text = song.songTitle
+        
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let index = tableView.indexPathForSelectedRow()
+        let video = userVideos[(index?.row)!] as Video
+        
+        if segue.identifier == "videoSegue" {
+            let vc = segue.destinationViewController as VideoVC
+            //vc.video = video
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier("videoSegue", sender: nil)
+    }
+    
+    
+    func getVideoForCell(indexPath: NSIndexPath) -> Song{
+        let fetchRequest = NSFetchRequest(entityName: "Video")
+        let predicate = NSPredicate(format: "songID == %@", self.userVideos[indexPath.row].songID)
+        fetchRequest.predicate = predicate
+        
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Song] {
+            song = fetchResults[0] as Song
+            return song
+        }
+    }
     
     /*
     

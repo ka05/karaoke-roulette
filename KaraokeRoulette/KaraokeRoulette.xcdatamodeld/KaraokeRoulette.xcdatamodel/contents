@@ -18,6 +18,7 @@
         <attribute name="profileImageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userNumSongsCompleted" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="video" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="user" inverseEntity="Video" syncable="YES"/>
     </entity>
     <entity name="Video" representedClassName="KaraokeRoulette.Video" syncable="YES">
@@ -32,7 +33,7 @@
     </entity>
     <elements>
         <element name="Song" positionX="-326" positionY="149" width="128" height="148"/>
-        <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
+        <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="120"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
         <element name="Friend" positionX="-207" positionY="45" width="128" height="88"/>
     </elements>
