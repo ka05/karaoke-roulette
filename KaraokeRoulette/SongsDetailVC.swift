@@ -16,7 +16,7 @@ class SongsDetailVC: UIViewController {
     @IBOutlet weak var songTitleLabel: UILabel!
     @IBOutlet weak var songLyricsTextView: UITextView!
     
-    
+    // button to push to KaraokeVC to start recording song
     @IBAction func startRecordingSong(sender: AnyObject) {
         
         let karaokeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("KaraokeVC") as KaraokeVC
@@ -27,6 +27,8 @@ class SongsDetailVC: UIViewController {
         
         //customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "KaraokeVC")
     }
+    
+    // MARK: - viewDidLoad-willAppear
     
     override func viewDidLoad() {
         super.viewDidLoad()

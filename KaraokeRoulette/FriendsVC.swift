@@ -14,19 +14,15 @@ class FriendsVC: UIViewController {
     
     var friendsArray: [Friend] = [Friend]()
     
-    // MARK: - Navigation Animations
+    // MARK: - Navigation Animations and events
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     
     var toggleBoolNavDown = false
     
-    
+    // swipe down event to pull navigation ui down
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 300
         
@@ -34,11 +30,9 @@ class FriendsVC: UIViewController {
         toggleBoolNavDown = true
     }
     
+    // swipe up event to roll navigation ui back up
     @IBAction func swipeNavUp(sender: UISwipeGestureRecognizer) {
-        println("swipe toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
         self.navHeight.constant = 70
         
@@ -46,12 +40,11 @@ class FriendsVC: UIViewController {
         toggleBoolNavDown = true
     }
     
+    // touch event to toggle navigation
     @IBAction func toggleNav(sender: UITapGestureRecognizer) {
-        println("touch toggled")
-        
         self.view.bringSubviewToFront(nav)
-        
         self.nav.layoutIfNeeded()
+        
         if(toggleBoolNavDown == false){
             self.navHeight.constant = 300
             
@@ -64,10 +57,9 @@ class FriendsVC: UIViewController {
             
             toggleBoolNavDown = false
         }
-        
     }
-    // END:
     
+    // MARK: - viewDidLoad-WillAppear
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,16 +87,5 @@ class FriendsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

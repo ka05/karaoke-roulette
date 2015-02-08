@@ -15,7 +15,6 @@
 		089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A01A858163001FBE6E /* LyricsParser.swift */; };
 		089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A21A858181001FBE6E /* SongTimer.swift */; };
 		089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089FF7A41A85A1E6001FBE6E /* Navigation.swift */; };
-		18470EDB1A85BF7500F9716F /* profilepicture.svg in Resources */ = {isa = PBXBuildFile; fileRef = 18470EDA1A85BF7500F9716F /* profilepicture.svg */; };
 		18470EE71A86C98600F9716F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18470EE61A86C98600F9716F /* Utils.swift */; };
 		18470EEC1A86D80F00F9716F /* CustomVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18470EEA1A86D80F00F9716F /* CustomVideoCell.swift */; };
 		18470EED1A86D80F00F9716F /* CustomVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18470EEB1A86D80F00F9716F /* CustomVideoCell.xib */; };
@@ -44,7 +43,6 @@
 		1870436F1A87FA7100E6F33F /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870436E1A87FA7100E6F33F /* VideoVC.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
-		18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD61A855EF800B7C1A7 /* ViewController.swift */; };
 		18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FD81A855EF800B7C1A7 /* Main.storyboard */; };
 		18C73FDC1A855EF800B7C1A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FDB1A855EF800B7C1A7 /* Images.xcassets */; };
 		18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FDD1A855EF800B7C1A7 /* LaunchScreen.xib */; };
@@ -55,8 +53,6 @@
 		18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C740001A856A4700B7C1A7 /* SongsTableVC.swift */; };
 		18C740031A856AB300B7C1A7 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C740021A856AB300B7C1A7 /* AboutVC.swift */; };
 		18C740051A85770700B7C1A7 /* roulette_nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C740041A85770700B7C1A7 /* roulette_nav.png */; };
-		18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */ = {isa = PBXBuildFile; fileRef = 18C740061A85861000B7C1A7 /* roulette_main.svg */; };
-		18C740091A85861000B7C1A7 /* roulette_nav.svg in Resources */ = {isa = PBXBuildFile; fileRef = 18C740071A85861000B7C1A7 /* roulette_nav.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +74,6 @@
 		089FF7A01A858163001FBE6E /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
 		089FF7A21A858181001FBE6E /* SongTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongTimer.swift; sourceTree = "<group>"; };
 		089FF7A41A85A1E6001FBE6E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
-		18470EDA1A85BF7500F9716F /* profilepicture.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = profilepicture.svg; sourceTree = "<group>"; };
 		18470EE61A86C98600F9716F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		18470EEA1A86D80F00F9716F /* CustomVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVideoCell.swift; sourceTree = "<group>"; };
 		18470EEB1A86D80F00F9716F /* CustomVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomVideoCell.xib; sourceTree = "<group>"; };
@@ -109,7 +104,6 @@
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18C73FD41A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KaraokeRoulette.xcdatamodel; sourceTree = "<group>"; };
-		18C73FD61A855EF800B7C1A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18C73FD91A855EF800B7C1A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18C73FDB1A855EF800B7C1A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18C73FDE1A855EF800B7C1A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -122,8 +116,6 @@
 		18C740001A856A4700B7C1A7 /* SongsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongsTableVC.swift; sourceTree = "<group>"; };
 		18C740021A856AB300B7C1A7 /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		18C740041A85770700B7C1A7 /* roulette_nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roulette_nav.png; sourceTree = "<group>"; };
-		18C740061A85861000B7C1A7 /* roulette_main.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roulette_main.svg; sourceTree = "<group>"; };
-		18C740071A85861000B7C1A7 /* roulette_nav.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roulette_nav.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,9 +193,6 @@
 				18470EF41A86E7F100F9716F /* orange-record-circle.png */,
 				18470EF21A86E70200F9716F /* default-placeholder.png */,
 				18470EEE1A86E0E600F9716F /* mobilemenu.png */,
-				18470EDA1A85BF7500F9716F /* profilepicture.svg */,
-				18C740061A85861000B7C1A7 /* roulette_main.svg */,
-				18C740071A85861000B7C1A7 /* roulette_nav.svg */,
 				18C740041A85770700B7C1A7 /* roulette_nav.png */,
 			);
 			name = img;
@@ -259,7 +248,6 @@
 				18C73FF61A8567A100B7C1A7 /* Includes */,
 				18C73FF71A8567AC00B7C1A7 /* Models */,
 				18C73FF81A8567B400B7C1A7 /* ViewControllers */,
-				18C73FD61A855EF800B7C1A7 /* ViewController.swift */,
 				18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */,
 				18C73FD81A855EF800B7C1A7 /* Main.storyboard */,
 				18C73FDB1A855EF800B7C1A7 /* Images.xcassets */,
@@ -424,7 +412,6 @@
 				18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */,
 				18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */,
 				187043641A87E5C000E6F33F /* Friends.plist in Resources */,
-				18C740091A85861000B7C1A7 /* roulette_nav.svg in Resources */,
 				18470EFB1A86E8A000F9716F /* CustomFriendsCell.xib in Resources */,
 				1870435F1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 in Resources */,
 				18C73FDC1A855EF800B7C1A7 /* Images.xcassets in Resources */,
@@ -434,12 +421,10 @@
 				1870434B1A87039200E6F33F /* twisted sisters - i wanna rock.lrc in Resources */,
 				18470EED1A86D80F00F9716F /* CustomVideoCell.xib in Resources */,
 				187043601A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 in Resources */,
-				18C740081A85861000B7C1A7 /* roulette_main.svg in Resources */,
 				18470EF51A86E7F100F9716F /* orange-record-circle.png in Resources */,
 				0834BFD41A87A85100C6FDD0 /* Songs.plist in Resources */,
 				1870435E1A87090400E6F33F /* In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3 in Resources */,
 				18470EF31A86E70200F9716F /* default-placeholder.png in Resources */,
-				18470EDB1A85BF7500F9716F /* profilepicture.svg in Resources */,
 				187043461A87039200E6F33F /* guns n' roses - sweet child o' mine.lrc in Resources */,
 				1870435C1A87090400E6F33F /* Don't_Stop_Believin'-Journey.mp3 in Resources */,
 				18C73FF51A85634E00B7C1A7 /* Navigation.xib in Resources */,
@@ -471,7 +456,6 @@
 				083190B31A85B5E8004B9A25 /* KaraokeVC.swift in Sources */,
 				1870436D1A87F0B900E6F33F /* UserInfo.swift in Sources */,
 				089FF7A51A85A1E6001FBE6E /* Navigation.swift in Sources */,
-				18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */,
 				18470EE71A86C98600F9716F /* Utils.swift in Sources */,
 				0834BFB61A871CC100C6FDD0 /* Video.swift in Sources */,
 				1870433C1A86FF8600E6F33F /* StartScript.swift in Sources */,
