@@ -10,15 +10,20 @@ import UIKit
 import Foundation
 
 class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var tempItems:[String] = ["song 1", "song2", "song3"]
+    
     @IBOutlet weak var nav: UIView!
     
-    // MARK: - Navigation Animations
     
+    // MARK: - Navigation Control
+    
+    // Outlets for Navigation
     @IBOutlet weak var navBar: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
+    @IBOutlet var tableView: UITableView!
     
     var toggleBoolNavDown = false
-    
     
     @IBAction func swipeNavDown(sender: UISwipeGestureRecognizer) {
         println("swipe toggled")
@@ -63,9 +68,9 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             toggleBoolNavDown = false
         }
-        
     }
     // END:
+    
     
     
     override func viewDidLoad() {
@@ -76,6 +81,8 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "songsCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,24 +95,36 @@ class SongsTableVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return self.tempItems.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
+        
         // Configure the cell...
-
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("songsCell") as UITableViewCell
+        
+        cell.textLabel?.text = self.tempItems[indexPath.row]
+        
         return cell
     }
     
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//        let index = tableView.indexPathForSelectedRow()
+//        pizza.pizzaType = pizza.typeList[index.row]
+//        if segue.identifier == "toEdit" {
+//            let vc = segue.destinationViewController as PizzaTypePriceVC
+//            vc.pizzaType = pizza.pizzaType
+//            vc.pizzaPrice = pizza.unitPrice()
+//        }
+//    }
+
 
     /*
     // Override to support conditional editing of the table view.
