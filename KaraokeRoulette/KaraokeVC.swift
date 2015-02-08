@@ -54,7 +54,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        session.sessionPreset = AVCaptureSessionPresetLow
+        session.sessionPreset = AVCaptureSessionPresetMedium
         let devices = AVCaptureDevice.devices()
         
         // Loop through the capture devices on this phone
@@ -82,6 +82,14 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     override func viewWillAppear(animated: Bool) {
         getParserInfo()
         addLinesToTextView()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeLine", name: lineChangeNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "markCountdown", name: countdownNotificationKey, object: nil)
+        addLinesToTextView()
+        readMP3File()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,9 +103,9 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     func startCountdown() {
         let timer = SongTimer(times: self.times)
         timer.startCountdown(countdown)
+        startRecording()
         KaraokeText.text = ""
         KaraokeText.text = "5"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "markCountdown", name: countdownNotificationKey, object: nil)
         setCountdownFont()
     }
     
@@ -108,33 +116,37 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         setCountdownFont()
         if countdown == 0 {
             // change notifications
-            NSNotificationCenter.defaultCenter().removeObserver(countdownNotificationKey)
             NSNotificationCenter.defaultCenter().postNotificationName(startSongTimingNotificationKey, object: self)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeLine", name: lineChangeNotificationKey, object: nil)
             addLinesToTextView()
+            startPlayingAudio()
         }
     }
     
     // changes the highlighted text in the textview
     func changeLine() {
-        KaraokeText.scrollRangeToVisible(getLineChangeRange())
-        lineIndex++
+//        if let range = getLineChangeRange() {
+//            KaraokeText.scrollRangeToVisible(range)
+//            lineIndex++
+//        }
     }
     
     // gets the range of a regex match for the line
-    func getLineChangeRange() -> NSRange {
-        // turn text into regex
-        var lineString = lines[lineIndex]
-        lineString = lineString.stringByReplacingOccurrencesOfString(" ", withString: "\\s", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString(".", withString: "\\.", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("'", withString: "\\'", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("\n", withString: "\\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
-        // create regex, get range
-        let regex = NSRegularExpression(pattern: lineString, options: nil, error: nil)
-        let range = NSMakeRange(0, countElements(KaraokeText.text))
-        let matches = regex?.matchesInString(KaraokeText.text, options: nil, range: range) as [NSTextCheckingResult]
-        let match = matches.last
-        let newRange = match?.range
-        return newRange!
-    }
+//    func getLineChangeRange() -> NSRange? {
+//        // turn text into regex
+//        var lineString = lines[lineIndex]
+//        lineString = lineString.stringByReplacingOccurrencesOfString(" ", withString: "\\s", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString(".", withString: "\\.", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("'", withString: "\\'", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("\n", withString: "\\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
+//        
+//        // create regex, get range
+//        let regex = NSRegularExpression(pattern: lineString, options: nil, error: nil)
+//        let range = NSMakeRange(0, countElements(KaraokeText.text))
+//        let matches = regex?.matchesInString(KaraokeText.text, options: nil, range: range) as [NSTextCheckingResult]
+//        if countElements(matches) > 0 {
+//            let match = matches.last
+//            let newRange = match?.range
+//            return newRange!
+//        }
+//        return nil
+//    }
     
     // MARK: Setup
     
@@ -194,6 +206,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // starts recording to the documents directory
     func startRecording() {
+        startStopButton.setBackgroundImage(UIImage(named: "Record"), forState: UIControlState.Normal)
         if videoDevice != nil && audioDevice != nil {
             videoID = getRandID()
             curFilePath = createDocPath(videoID) + ".mov"
@@ -219,17 +232,12 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     // stops the recording
     func stopRecording() {
         // change button and state
-        startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
+        startStopButton.setBackgroundImage(UIImage(named: "Record_Inactive"), forState: UIControlState.Normal)
         isRecording = false
         shouldSave = false
         movieOutput?.stopRecording()
         session.stopRunning()
         self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    func beginCountdown() {
-        countdown = 5
-        startRecording()
     }
     
     // MARK: Core Data
@@ -240,8 +248,8 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         
         // Prep core
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context = appDelegate.managedObjectContext
-        var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Video", inManagedObjectContext: context!) as Video
+        let context = appDelegate.managedObjectContext!
+        var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Video", inManagedObjectContext: context) as Video
         
         // prep attributes
         toLoad.creationDateTime = NSDate()
@@ -252,7 +260,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         
         // save
         var error:NSError? = nil
-        if !context!.save(&error) {
+        if !context.save(&error) {
             println("Error: \(error)")
         }
     }
@@ -262,7 +270,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         var userID:String!
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext!
-        let req = NSFetchRequest(entityName: "Song")
+        let req = NSFetchRequest(entityName: "UserInfo")
         var error:NSError? = nil
         let fetched:NSArray = context.executeFetchRequest(req, error: &error)!
         
@@ -277,8 +285,15 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // reads the mp3 file into the av player
     func readMP3File() {
+        setUpAudio()
         var error:NSError?
-        let mp3URL = NSBundle.mainBundle().URLForResource(song.fileName, withExtension: "mp3") as NSURL!
+        println("\(song.fileName)")
+        let strLength = countElements(song.fileName)
+        let strIndex = strLength - 4
+        let name = song.fileName.substringToIndex(advance(song.fileName.startIndex, strIndex))
+        println("\(name)")
+        let path = NSBundle.mainBundle().pathForResource(name, ofType: "mp3")
+        let mp3URL = NSURL(fileURLWithPath: path!)
         
         // instantiate the avaudioplayer
         self.audioPlayer = AVAudioPlayer(contentsOfURL: mp3URL, error: &error)
@@ -292,6 +307,11 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         audioPlayer?.delegate = self
         audioPlayer?.prepareToPlay()
         audioPlayer?.volume = 0.6
+    }
+    
+    func setUpAudio() {
+        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord, withOptions: AVAudioSessionCategoryOptions.MixWithOthers|AVAudioSessionCategoryOptions.DefaultToSpeaker, error: nil)
+        AVAudioSession.sharedInstance().setActive(true, error: nil)
     }
     
     func startPlayingAudio() {
@@ -322,19 +342,19 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         if recordSuccess {
             
             // delete file if recording was interrupted
-            if shouldSave {
+//            if shouldSave {
                 println("File was saved succesfully")
                 writeToCore()
-            } else {
-                // delete the file that was saved
-                let fileManager = NSFileManager.defaultManager()
-                if fileManager.fileExistsAtPath(curFilePath!) {
-                    var err:NSError?
-                    if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
-                        println("Error removing disrupted file")
-                    }
-                }
-            }
+//            } else {
+//                // delete the file that was saved
+//                let fileManager = NSFileManager.defaultManager()
+//                if fileManager.fileExistsAtPath(curFilePath!) {
+//                    var err:NSError?
+//                    if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
+//                        println("Error removing disrupted file")
+//                    }
+//                }
+//            }
         }
     }
     
@@ -351,12 +371,12 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // MARK: Font helpers
     func setCountdownFont() {
-        KaraokeText.font = UIFont(name: "Helvetica", size: 32)
+        KaraokeText.font = UIFont(name: "Helvetica", size: 52)
         setKaraokeFontAlign()
     }
     
     func setKaraokeFont() {
-        KaraokeText.font = UIFont(name: "Helvetica", size: 18)
+        KaraokeText.font = UIFont(name: "Helvetica", size: 24)
         setKaraokeFontAlign()
     }
     
