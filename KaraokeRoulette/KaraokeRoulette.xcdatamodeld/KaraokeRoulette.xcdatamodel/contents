@@ -15,8 +15,8 @@
     </entity>
     <entity name="Song" representedClassName="Song" syncable="YES">
         <attribute name="artistID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="attribute" optional="YES" syncable="YES"/>
         <attribute name="genreID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="lyrics" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="songID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="songTitle" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,7 +44,7 @@
         <element name="Artist" positionX="-162" positionY="297" width="128" height="88"/>
         <element name="Genre" positionX="-479" positionY="306" width="128" height="88"/>
         <element name="Initialize" positionX="-173" positionY="57" width="128" height="60"/>
-        <element name="Song" positionX="-317" positionY="108" width="128" height="178"/>
+        <element name="Song" positionX="-317" positionY="108" width="128" height="28"/>
         <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="163"/>
     </elements>
