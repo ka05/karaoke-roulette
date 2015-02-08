@@ -15,6 +15,8 @@ import AVFoundation
 class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
     
     let session = AVCaptureSession()
+    var curFilePath:String?
+    var curFileURL:NSURL?
     var preview:AVCaptureVideoPreviewLayer?
     var videoDevice:AVCaptureDevice?
     var audioDevice:AVCaptureDevice?
@@ -31,7 +33,11 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBOutlet weak var startStopButton: UIButton!
     
     @IBAction func startSong(sender: AnyObject) {
-        beginCountdown()
+        if !isRecording {
+            startRecording()
+        } else {
+            stopRecording()
+        }
     }
     
     override func viewDidLoad() {
@@ -101,28 +107,48 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-        println("I finished recording")
+        println("I recorded succesfully")
+        var recordSuccess = true
+        
+        // error checking
+        if error != nil {
+            let code = error.userInfo?[AVErrorRecordingSuccessfullyFinishedKey] as Bool
+            if code {
+                recordSuccess = code
+            }
+        }
+        
+        if recordSuccess {
+            println("File was saved succesffuly")
+        }
     }
     
     func startRecording() {
         if videoDevice != nil && audioDevice != nil {
-            let filePath = createDocPath(getRandID()) + ".mov"
-            let outputURL = NSURL(fileURLWithPath: filePath)
+            curFilePath = createDocPath(getRandID()) + ".mov"
+            curFileURL = NSURL(fileURLWithPath: curFilePath!)
             let fileManager = NSFileManager.defaultManager()
             
             // check to see if it exists
-            if fileManager.fileExistsAtPath(filePath) {
+            if fileManager.fileExistsAtPath(curFilePath!) {
                 var err:NSError?
-                if !fileManager.removeItemAtPath(filePath, error: &err) {
+                if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
                     println("Error removing file")
                 }
             }
             // start recording to file url
-            movieOutput?.startRecordingToOutputFileURL(outputURL, recordingDelegate: self)
+            movieOutput?.startRecordingToOutputFileURL(curFileURL!, recordingDelegate: self)
+
+            // change button and state
+            startStopButton.setTitle("Stop Song", forState: UIControlState.Normal)
+            isRecording = true
         }
     }
     
     func stopRecording() {
+        // change button and state
+        startStopButton.setTitle("Start Song", forState: UIControlState.Normal)
+        isRecording = false
         movieOutput?.stopRecording()
         session.stopRunning()
     }
