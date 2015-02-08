@@ -39,6 +39,11 @@ class SongsDetailVC: UIViewController {
         artistLabel.text = song.artistName
         songTitleLabel.text = song.songTitle
         
+        NSLog("%@", song.artistImageFileName)
+        
+        println(song.artistImageFileName)
+        artistImage.image = UIImage(named: song.artistImageFileName as String)
+        
         // parse lyrics from parser
         let parser = LyricsParser(song: song)
         let lines = parser.getInfo().lines

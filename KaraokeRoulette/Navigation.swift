@@ -20,7 +20,6 @@ import UIKit
     
     // push to SongsTableVC from wherever
     @IBAction func songsLink(sender: AnyObject) {
-        println("THIS SHOULD PRINT")
         if let songsTable = sourceVC as? SongsTableVC{
             return
         }

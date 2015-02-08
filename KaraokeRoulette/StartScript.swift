@@ -33,6 +33,7 @@ class StartScript: NSObject {
                         var toLoad = NSEntityDescription.insertNewObjectForEntityForName("Song", inManagedObjectContext: context!) as Song
                         toLoad.songID = index
                         toLoad.artistName = song["artistName"] as String
+                        toLoad.artistImageFileName = song["artistImageFileName"] as String
                         toLoad.fileName = song["fileName"] as String
                         toLoad.length = song["length"] as Float
                         toLoad.lyrics = song["lyrics"] as String

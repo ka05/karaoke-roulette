@@ -5,6 +5,8 @@
 	<key>Songs</key>
 	<array>
 		<dict>
+			<key>artistImageFileName</key>
+			<string>gunsnroses</string>
 			<key>artistName</key>
 			<string>Guns n&apos; Roses</string>
 			<key>fileName</key>
@@ -19,6 +21,8 @@
 		<dict>
 			<key>artistName</key>
 			<string>Tom Petty</string>
+			<key>artistImageFileName</key>
+			<string>tompetty</string>
 			<key>fileName</key>
 			<string>Free_Fallin-Tom_Petty.mp3</string>
 			<key>length</key>
@@ -31,6 +35,8 @@
 		<dict>
 			<key>artistName</key>
 			<string>Twisted Sister</string>
+			<key>artistImageFileName</key>
+			<string>twistedsister</string>
 			<key>fileName</key>
 			<string>In_the_Style_of_Twisted Sister-I Wanna_Rock.mp3</string>
 			<key>length</key>
@@ -43,6 +49,8 @@
 		<dict>
 			<key>artistName</key>
 			<string>Taylor Swift</string>
+			<key>artistImageFileName</key>
+			<string>taylorswift</string>
 			<key>fileName</key>
 			<string>Shake_It_off-Taylor_Swift].mp3</string>
 			<key>length</key>
@@ -55,6 +63,8 @@
 		<dict>
 			<key>artistName</key>
 			<string>Journey</string>
+			<key>artistImageFileName</key>
+			<string>journey</string>
 			<key>fileName</key>
 			<string>Don&apos;t_Stop_Believin&apos;-Journey.mp3</string>
 			<key>length</key>
