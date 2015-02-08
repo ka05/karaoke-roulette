@@ -39,6 +39,8 @@
 		1870435F1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1870435A1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 */; };
 		187043601A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1870435B1A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 */; };
 		187043621A87CF1300E6F33F /* Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187043611A87CF1300E6F33F /* Interface.swift */; };
+		187043641A87E5C000E6F33F /* Friends.plist in Resources */ = {isa = PBXBuildFile; fileRef = 187043631A87E5C000E6F33F /* Friends.plist */; };
+		187043691A87E74A00E6F33F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187043681A87E74A00E6F33F /* Friend.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
 		18C73FD71A855EF800B7C1A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD61A855EF800B7C1A7 /* ViewController.swift */; };
@@ -99,6 +101,8 @@
 		1870435A1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Shake_It_off-Taylor_Swift].mp3"; sourceTree = "<group>"; };
 		1870435B1A87090400E6F33F /* Sweet_Child_O'Mine-Guns_N'_Roses.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Sweet_Child_O'Mine-Guns_N'_Roses.mp3"; sourceTree = "<group>"; };
 		187043611A87CF1300E6F33F /* Interface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interface.swift; sourceTree = "<group>"; };
+		187043631A87E5C000E6F33F /* Friends.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Friends.plist; sourceTree = "<group>"; };
+		187043681A87E74A00E6F33F /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		18C73FCC1A855EF800B7C1A7 /* KaraokeRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaraokeRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 		080A1B2E1A86D2C0006DE962 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				187043681A87E74A00E6F33F /* Friend.swift */,
 				0834BFB71A871CC100C6FDD0 /* UserInfo.swift */,
 				0834BFB51A871CC100C6FDD0 /* Video.swift */,
 				0834BFB31A871CC100C6FDD0 /* Song.swift */,
@@ -271,6 +276,7 @@
 				1870433D1A87036800E6F33F /* img */,
 				18C73FD01A855EF800B7C1A7 /* Info.plist */,
 				0834BFD31A87A85100C6FDD0 /* Songs.plist */,
+				187043631A87E5C000E6F33F /* Friends.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 				187043471A87039200E6F33F /* journey - don't stop believing.lrc in Resources */,
 				18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */,
 				18C73FDF1A855EF800B7C1A7 /* LaunchScreen.xib in Resources */,
+				187043641A87E5C000E6F33F /* Friends.plist in Resources */,
 				18C740091A85861000B7C1A7 /* roulette_nav.svg in Resources */,
 				18470EFB1A86E8A000F9716F /* CustomFriendsCell.xib in Resources */,
 				1870435F1A87090400E6F33F /* Shake_It_off-Taylor_Swift].mp3 in Resources */,
@@ -471,6 +478,7 @@
 				18470EF11A86E33700F9716F /* SongsDetailVC.swift in Sources */,
 				089FF7A11A858163001FBE6E /* LyricsParser.swift in Sources */,
 				089FF7A31A858181001FBE6E /* SongTimer.swift in Sources */,
+				187043691A87E74A00E6F33F /* Friend.swift in Sources */,
 				187043621A87CF1300E6F33F /* Interface.swift in Sources */,
 				0834BFB81A871CC100C6FDD0 /* UserInfo.swift in Sources */,
 				18C73FFD1A85683F00B7C1A7 /* FriendsVC.swift in Sources */,
@@ -596,9 +604,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = KaraokeRoulette/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -606,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = KaraokeRoulette/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
