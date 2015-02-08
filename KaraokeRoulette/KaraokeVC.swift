@@ -6,13 +6,15 @@
 //  Copyright (c) 2015 Herendeen. All rights reserved.
 //
 
+// http://www.rockhoppertech.com/blog/swift-avfoundation/#audiofile
+
 import UIKit
 import MediaPlayer
 import CoreMedia
 import MobileCoreServices
 import AVFoundation
 
-class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCaptureFileOutputRecordingDelegate {
+class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudioPlayerDelegate {
     
     let session = AVCaptureSession()
     var curFilePath:String?
@@ -25,7 +27,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var movieOutput:AVCaptureMovieFileOutput?
     var captureConnection:AVCaptureConnection?
     var player:AVPlayer?
-    var toPass:Int!
+    var song:Song!
     var lines:[String]!
     var times:[Double]!
     var countdown = 5
@@ -134,7 +136,7 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     // Get the song lyrics/times from the parser
     func getParserInfo() {
-        let parser = LyricsParser(songId: toPass)
+        let parser = LyricsParser(song: song)
         let parserInfo = parser.getInfo()
         lines = parserInfo.lines
         times = parserInfo.times
@@ -239,10 +241,6 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         session.stopRunning()
     }
     
-    func destroyScreen() {
-        videoView.hidden = true
-    }
-    
     func beginCountdown() {
         countdown = 5
         startRecording()
@@ -250,32 +248,36 @@ class KaraokeVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     // MARK: MP3 Playback
     
-    func beginSong() {
+    // reads the mp3 file into the av player
+    func readMP3File() {
+        var error:NSError?
+        let mp3URL = NSBundle.mainBundle().URLForResource(song.fileName, withExtension: "mp3") as NSURL!
         
+        // instantiate the avaudioplayer
+        self.audioPlayer = AVAudioPlayer(contentsOfURL: mp3URL, error: &error)
+        if audioPlayer == nil {
+            if let isError = error {
+                println("\(isError.localizedDescription)")
+            }
+        }
+        
+        // set the delegate
+        audioPlayer?.delegate = self
+        audioPlayer?.prepareToPlay()
+        audioPlayer?.volume = 0.6
     }
     
-    func playMp3() {
-        var songMp3 = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("2012", ofType: "mp3")!)
-        println(songMp3)
-        
-        // Removed deprecated use of AVAudioSessionDelegate protocol
-        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-        AVAudioSession.sharedInstance().setActive(true, error: nil)
-        
-        var playerItem = AVPlayerItem(URL: songMp3)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "itemDidFinishPlaying:", name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
-        
-        
-        player = AVPlayer(playerItem: playerItem)
-        player!.play()
+    func startPlayingAudio() {
+        audioPlayer?.play()
     }
     
-    func itemDidFinishPlaying(notification: NSNotification){
-        //song is done playing
-        
-        stopRecording()
-        destroyScreen()
+    // MARK: AVAudioPlayerDelegate
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+        NSNotificationCenter.defaultCenter().postNotificationName(stopSongTimingNotificationKey, object: self)
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer!, error: NSError!) {
+        println("\(error.localizedDescription)")
     }
     
     /*

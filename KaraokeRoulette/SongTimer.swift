@@ -30,19 +30,9 @@ class SongTimer : NSObject {
         self.countdown = 0
     }
     
-    // called when deinit
-    deinit {
-        removeSongStartObserver()
-    }
-    
     // adds the observer for song start
     func addSongStartObserver() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startSongTiming", name: startSongTimingNotificationKey, object: nil)
-    }
-    
-    // remove the observer for song start
-    func removeSongStartObserver() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // Starts the timing function
@@ -50,6 +40,12 @@ class SongTimer : NSObject {
         let sel:Selector = "updateTime"
         timer = NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: sel, userInfo: nil, repeats: true)
         self.start = NSDate.timeIntervalSinceReferenceDate()
+    }
+    
+    // remove the observer for song start
+    func stopSongTiming() {
+        stopTimer()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // Updates the current time
@@ -84,6 +80,7 @@ class SongTimer : NSObject {
     func startSongTiming() {
         self.started = true
         startTiming()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "stopSongTiming", name: stopSongTimingNotificationKey, object: nil)
     }
     
     // checks the time
