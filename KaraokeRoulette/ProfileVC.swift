@@ -223,18 +223,20 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         var fetchedResults:NSArray = managedContext.executeFetchRequest(fetchRequest, error: &error)!
         
         if fetchedResults.count > 0 {
-//            var res = fetchedResults[0] as UserInfo
-//            println("\(res.profileImageData)")
-//            if res.profileImageData.is {
-//                var image
-//            }
-//            var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
-//            image = sFunc_imageFixOrientation(image)
-//            self.profileImageView.image = image
-        }
-        else{
-//            var img = UIImage("profileImage")
-//            self.profileImageView.image = img
+            var res = fetchedResults[0] as UserInfo
+//
+            if let img = res.profileImageData as NSData?{
+                println("picture exitst")
+                println("\(res.profileImageData)")
+                var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
+                image = sFunc_imageFixOrientation(image)
+                self.profileImageView.image = image
+            }
+            else{
+                println("no picture taken")
+                var img = UIImage(named: "profile100")
+                self.profileImageView.image = img
+            }
         }
     }
     
