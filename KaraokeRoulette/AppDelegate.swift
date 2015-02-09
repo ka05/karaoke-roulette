@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let startScript = StartScript()
                 startScript.loadSongs()
                 startScript.getUserInfo()
+                startScript.loadFriends()
             }
         }
         return true

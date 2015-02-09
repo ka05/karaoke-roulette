@@ -27,7 +27,17 @@ class VideoVC: UIViewController {
     func startPlayingVideo(){
         // get video from documents dir
         //let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString + "/filename"
-        
+//        var url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")
+//        
+//        moviePlayer = MPMoviePlayerController(contentURL: url)
+//        
+//        moviePlayer.view.frame = CGRect(x: 20, y: 100, width: 200, height: 150)
+//        
+//        self.view.addSubview(moviePlayer.view)
+//        
+//        moviePlayer.fullscreen = true
+//        
+//        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
         
     }
     

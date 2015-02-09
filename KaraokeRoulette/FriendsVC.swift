@@ -10,13 +10,14 @@ import UIKit
 import Foundation
 import CoreData
 
-class FriendsVC: UIViewController {
+class FriendsVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var friendsArray: [Friend] = [Friend]()
+    var friendsArray: [Friend]!
     
     // MARK: - Navigation Animations and events
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
+    @IBOutlet var collectionView: UICollectionView?
     
     var toggleBoolNavDown = false
     
@@ -63,7 +64,6 @@ class FriendsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -77,15 +77,40 @@ class FriendsVC: UIViewController {
         if let results = fetched {
             for result in results {
                 friendsArray.append(result as Friend)
+                
+                println("blah")
             }
         } else {
             println("Errors: \(error)")
         }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // MARK: - collectionView stuff
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.friendsArray.count
+    }
 
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("friendsCell", forIndexPath: indexPath) as CustomFriendsCell
+        
+        
+        
+        let friend = friendsArray[indexPath.row] as Friend
+        cell.friendName?.text = friend.name
+        cell.friendImage?.image = UIImage(named: friend.profileImage)
+        return cell
+    }
+    
 }
