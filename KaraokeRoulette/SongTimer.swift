@@ -84,8 +84,11 @@ class SongTimer : NSObject {
     
     // checks the time
     func checkTime() {
+        // another filthy hack
+        if index == countElements(times) { return }
         if elapsed > times[index] {
             NSNotificationCenter.defaultCenter().postNotificationName(lineChangeNotificationKey, object: self)
+            index++
         }
     }
     
