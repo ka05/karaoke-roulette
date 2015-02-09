@@ -41,6 +41,7 @@
 		187043691A87E74A00E6F33F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187043681A87E74A00E6F33F /* Friend.swift */; };
 		1870436D1A87F0B900E6F33F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870436C1A87F0B900E6F33F /* UserInfo.swift */; };
 		1870436F1A87FA7100E6F33F /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870436E1A87FA7100E6F33F /* VideoVC.swift */; };
+		187043711A88610D00E6F33F /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187043701A88610D00E6F33F /* FriendProfileVC.swift */; };
 		18C73FD21A855EF800B7C1A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */; };
 		18C73FD51A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18C73FD31A855EF800B7C1A7 /* KaraokeRoulette.xcdatamodeld */; };
 		18C73FDA1A855EF800B7C1A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C73FD81A855EF800B7C1A7 /* Main.storyboard */; };
@@ -100,6 +101,7 @@
 		187043681A87E74A00E6F33F /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		1870436C1A87F0B900E6F33F /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		1870436E1A87FA7100E6F33F /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		187043701A88610D00E6F33F /* FriendProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileVC.swift; sourceTree = "<group>"; };
 		18C73FCC1A855EF800B7C1A7 /* KaraokeRoulette.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaraokeRoulette.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C73FD01A855EF800B7C1A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C73FD11A855EF800B7C1A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				18470EF01A86E33700F9716F /* SongsDetailVC.swift */,
 				18470EFC1A86EEEA00F9716F /* MashupVC.swift */,
 				1870436E1A87FA7100E6F33F /* VideoVC.swift */,
+				187043701A88610D00E6F33F /* FriendProfileVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			files = (
 				1870436F1A87FA7100E6F33F /* VideoVC.swift in Sources */,
 				18C73FFF1A85699700B7C1A7 /* ProfileVC.swift in Sources */,
+				187043711A88610D00E6F33F /* FriendProfileVC.swift in Sources */,
 				18470EFD1A86EEEA00F9716F /* MashupVC.swift in Sources */,
 				18C740011A856A4700B7C1A7 /* SongsTableVC.swift in Sources */,
 				18470EFA1A86E8A000F9716F /* CustomFriendsCell.swift in Sources */,

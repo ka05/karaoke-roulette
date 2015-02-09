@@ -8,7 +8,7 @@
 			<key>numSongsCompleted</key>
 			<integer>4</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>John</string>
 		</dict>
@@ -16,7 +16,7 @@
 			<key>numSongsCompleted</key>
 			<integer>2</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>Tedd</string>
 		</dict>
@@ -24,7 +24,7 @@
 			<key>numSongsCompleted</key>
 			<integer>3</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>Phillip</string>
 		</dict>
@@ -32,7 +32,7 @@
 			<key>numSongsCompleted</key>
 			<integer>1</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>Bryan</string>
 		</dict>
@@ -40,7 +40,7 @@
 			<key>numSongsCompleted</key>
 			<integer>2</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>Smith</string>
 		</dict>
@@ -48,7 +48,7 @@
 			<key>numSongsCompleted</key>
 			<integer>3</integer>
 			<key>profileImage</key>
-			<string></string>
+			<string>profile100</string>
 			<key>name</key>
 			<string>Fred</string>
 		</dict>

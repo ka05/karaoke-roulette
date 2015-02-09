@@ -232,7 +232,6 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
             if let img = res.profileImageData as NSData?{
                 
                 // photo exists in coredata
-                println("\(res.profileImageData)")
                 var image:UIImage = UIImage(data: res.valueForKey("profileImageData") as NSData)!
                 image = sFunc_imageFixOrientation(image)
                 self.profileImageView.image = image
@@ -446,7 +445,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let index = tableView.indexPathForSelectedRow()
-        let video = userVideos[(index?.row)!] as Video
+        let video = userVideos[index!.row] as Video
         
         if segue.identifier == "videoSegue" {
             let vc = segue.destinationViewController as VideoVC

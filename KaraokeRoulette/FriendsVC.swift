@@ -12,12 +12,12 @@ import CoreData
 
 class FriendsVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var friendsArray: [Friend]!
+    var friendsArray: [Friend] = []
     
     // MARK: - Navigation Animations and events
     @IBOutlet weak var nav: Navigation!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
-    @IBOutlet var collectionView: UICollectionView?
+    @IBOutlet var collectionView: UICollectionView!
     
     var toggleBoolNavDown = false
     
@@ -71,18 +71,24 @@ class FriendsVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         let context = appDelegate.managedObjectContext
         let req = NSFetchRequest(entityName: "Friend")
         var error:NSError? = nil
-        let fetched = context?.executeFetchRequest(req, error: &error) as [NSManagedObject]?
-        
-        // check validity of query
-        if let results = fetched {
-            for result in results {
-                friendsArray.append(result as Friend)
-                
-                println("blah")
-            }
+        if let fetched = context?.executeFetchRequest(req, error: &error) as? [Friend] {
+            friendsArray += fetched
         } else {
-            println("Errors: \(error)")
+            NSLog("Errors: %@", error!.localizedDescription)
         }
+//
+//        // check validity of query
+//        if let results = fetched {
+//            friendsArray += results
+//            
+////            for result in results {
+////                friendsArray.append(result)
+////                
+////                println("blah")
+////            }
+//        } else {
+//            println("Errors: \(error)")
+//        }
         
     }
     
@@ -107,10 +113,28 @@ class FriendsVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
         
         
         
-        let friend = friendsArray[indexPath.row] as Friend
-        cell.friendName?.text = friend.name
-        cell.friendImage?.image = UIImage(named: friend.profileImage)
+        let friend = friendsArray[indexPath.row]
+        NSLog("Rendering cell for friend: %@", friend.profileImage)
+        
+        cell.friendImage.image = UIImage(named: "profile100")
+//        cell.friendImage.layer.cornerRadius = cell.friendImage.frame.size.width / 2
+        cell.friendImage.clipsToBounds = true
+        cell.friendImage.layer.borderWidth = 3
+        cell.friendImage.layer.borderColor = UIColor.orangeColor().CGColor
+        cell.friendName.text = friend.name
         return cell
     }
+    
+    
+    
+//    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!)
+//    {
+//        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("friendsCell",
+//            forIndexPath: indexPath) as UICollectionViewCell
+//        
+//        let vc = segue.destinationViewController as FriendProfileVC
+//        vc.friend = friend
+//        
+//    }
     
 }

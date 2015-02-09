@@ -385,9 +385,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         KaraokeText.textAlignment = NSTextAlignment.Center
     }
     
-    @IBAction func popToDetail(){
-        
-        
+    @IBAction func popOut(){
         //customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
         
     }
