@@ -31,8 +31,9 @@ class SongTimer : NSObject {
     }
     
     // adds the observer for song start
-    func addSongStartObserver() {
+    func addObservers() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startSongTiming", name: startSongTimingNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "stopSongTiming", name: stopSongTimingNotificationKey, object: nil)
     }
     
     // Starts the timing function
@@ -61,26 +62,24 @@ class SongTimer : NSObject {
     
     // starts the countdown
     func startCountdown(countdown: Int) {
+        addObservers()
         self.countdown = countdown
-        updateTime()
+        startTiming()
     }
     
     // Performs the countdown operation
     func performCountdown() {
-        if firstCount {
-            self.addSongStartObserver()
-        } else {
+        if elapsed > countMark {
             countdown--
             countMark += countSpace
+            NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(countdownNotificationKey, object: self)
     }
     
     // starts the song timing
     func startSongTiming() {
         self.started = true
         startTiming()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "stopSongTiming", name: stopSongTimingNotificationKey, object: nil)
     }
     
     // checks the time

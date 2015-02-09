@@ -25,6 +25,27 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     @IBOutlet weak var userNumSongsLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     
+    // MARK: view
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        setImgProp()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "videoCell")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - viewWillAppear
+    override func viewWillAppear(animated: Bool) {
+        setUserInfoInUI()
+        loadUserVideos()
+    }
+    
+    
     // MARK: - Navigation Animations
     
     // Outlets for Navigation
@@ -349,24 +370,6 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         userNameLabel.text = name
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        setImgProp()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - viewWillAppear
-    override func viewWillAppear(animated: Bool) {
-        setUserInfoInUI()
-        loadUserVideos()
-    }
-    
     // MARK: - loading functions
     
     func setUserInfoInUI(){
@@ -396,18 +399,15 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     // gets users videos from core data
     func loadUserVideos(){
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        let context = appDelegate.managedObjectContext
+        let context = appDelegate.managedObjectContext!
         let req = NSFetchRequest(entityName: "Video")
-        var error:NSError? = nil
-        let fetched = context?.executeFetchRequest(req, error: &error) as [Video]?
+        var err:NSError? = nil
+        let fetched:NSArray = context.executeFetchRequest(req, error: &err)!
         
-        // check validity of query
-        if let results = fetched {
-            for result in results {
+        if fetched.count > 0 {
+            for result in fetched {
                 userVideos.append(result as Video)
             }
-        } else {
-            println("Errors: \(error)")
         }
     }
     
@@ -437,7 +437,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "videoCell")
         
         // call getVideo to get song corresponding to video
-        var song = getVideoForCell(indexPath)
+        var song = getSongForCell(indexPath)
         
         cell.textLabel?.text = song.songTitle
         
@@ -471,12 +471,13 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
     }
     
     // gets a song from video object given indexpath
-    func getVideoForCell(indexPath: NSIndexPath) -> Song{
+    func getSongForCell(indexPath: NSIndexPath) -> Song{
         var song:Song!
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let context = appDelegate.managedObjectContext!
-        let fetchRequest = NSFetchRequest(entityName: "Video")
-        let predicate = NSPredicate(format: "songID == %@", self.userVideos[indexPath.row].songID)
+        let fetchRequest = NSFetchRequest(entityName: "Song")
+        let id = self.userVideos[indexPath.row].songID as NSNumber
+        let predicate = NSPredicate(format: "songID == %@", id)
         fetchRequest.predicate = predicate
         
         if let fetchResults = context.executeFetchRequest(fetchRequest, error: nil) as? [Song] {
