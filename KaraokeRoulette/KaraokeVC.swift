@@ -102,7 +102,8 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     }
     
     func popToDetailController() {
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        let vc = ProfileVC()
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     // MARK: Timing
