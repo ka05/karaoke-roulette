@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Friend" representedClassName="Friend" syncable="YES">
+    <entity name="Friend" representedClassName="KaraokeRoulette.Friend" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numSongsCompleted" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="profileImage" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,7 +32,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserInfo" inverseName="video" inverseEntity="UserInfo" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Friend" positionX="-207" positionY="45" width="128" height="88"/>
+        <element name="Friend" positionX="-207" positionY="45" width="128" height="90"/>
         <element name="Song" positionX="-326" positionY="149" width="128" height="165"/>
         <element name="UserInfo" positionX="-117" positionY="-126" width="128" height="103"/>
         <element name="Video" positionX="-324" positionY="-117" width="128" height="150"/>

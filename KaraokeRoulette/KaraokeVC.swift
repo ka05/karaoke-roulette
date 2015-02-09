@@ -207,6 +207,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     // starts recording to the documents directory
     func startRecording() {
         startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
+        
         if videoDevice != nil && audioDevice != nil {
             videoID = getRandID()
             curFilePath = createDocPath(videoID) + ".mov"
@@ -383,6 +384,14 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         KaraokeText.textColor = UIColor.whiteColor()
         KaraokeText.textAlignment = NSTextAlignment.Center
     }
+    
+    @IBAction func popToDetail(){
+        
+        
+        //customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
+        
+    }
+    
     /*
     // MARK: - Navigation
     
