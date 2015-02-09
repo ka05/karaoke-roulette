@@ -53,6 +53,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     @IBAction func popToDetail(){
         if isRecording {
+            shouldSave = false
             stopRecording()
         }
         popToDetailController()
@@ -255,7 +256,6 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     func stopRecording() {
         // change button and state
         startStopButton.setImage(UIImage(named: "Record_Inactive"), forState: UIControlState.Normal)
-        shouldSave = false
         audioPlayer?.stop()
         movieOutput?.stopRecording()
         session.stopRunning()
