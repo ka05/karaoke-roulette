@@ -49,6 +49,10 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         }
     }
     
+    @IBAction func popToDetail(){
+        popToDetailController()
+    }
+    
     // MARK: Overrides
     
     override func viewDidLoad() {
@@ -97,6 +101,10 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         // Dispose of any resources that can be recreated.
     }
     
+    func popToDetailController() {
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     // MARK: Timing
     
     // starts the countdown process
@@ -124,29 +132,38 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // changes the highlighted text in the textview
     func changeLine() {
-//        if let range = getLineChangeRange() {
-//            KaraokeText.scrollRangeToVisible(range)
-//            lineIndex++
-//        }
+        if let range = getLineChangeRange() {
+            KaraokeText.scrollRangeToVisible(range)
+            KaraokeText.selectedRange = range
+            lineIndex++
+        }
     }
     
     // gets the range of a regex match for the line
-//    func getLineChangeRange() -> NSRange? {
-//        // turn text into regex
-//        var lineString = lines[lineIndex]
-//        lineString = lineString.stringByReplacingOccurrencesOfString(" ", withString: "\\s", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString(".", withString: "\\.", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("'", withString: "\\'", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("\n", withString: "\\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
-//        
-//        // create regex, get range
-//        let regex = NSRegularExpression(pattern: lineString, options: nil, error: nil)
-//        let range = NSMakeRange(0, countElements(KaraokeText.text))
-//        let matches = regex?.matchesInString(KaraokeText.text, options: nil, range: range) as [NSTextCheckingResult]
-//        if countElements(matches) > 0 {
-//            let match = matches.last
-//            let newRange = match?.range
-//            return newRange!
-//        }
-//        return nil
-//    }
+    func getLineChangeRange() -> NSRange? {
+        // filthy filthy hack to prevent errors
+        if lineIndex == countElements(lines) {
+            return nil
+        }
+        // turn text into regex
+        var lineString = lines[lineIndex]
+        if lineString.substringFromIndex(lines[lineIndex].endIndex.predecessor()) == " " {
+            lineString = lineString.substringToIndex(lines[lineIndex].endIndex.predecessor())
+        }
+        lineString = lineString.stringByReplacingOccurrencesOfString(" ", withString: "\\s", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString(".", withString: "\\.", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("'", withString: "\\'", options: NSStringCompareOptions.LiteralSearch, range: nil).stringByReplacingOccurrencesOfString("\n", withString: "\\n", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        // create regex, get range
+        let regex = NSRegularExpression(pattern: lineString, options: nil, error: nil)
+        let range = NSMakeRange(0, countElements(KaraokeText.text))
+        if let matches = regex?.matchesInString(KaraokeText.text, options: nil, range: range) as? [NSTextCheckingResult] {
+            if countElements(matches) > 0 {
+                let match = matches.last
+                let newRange = match?.range
+                return newRange!
+            }
+        }
+        return nil
+    }
     
     // MARK: Setup
     
@@ -206,6 +223,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // starts recording to the documents directory
     func startRecording() {
+        isRecording = true
         startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
         
         if videoDevice != nil && audioDevice != nil {
@@ -223,10 +241,6 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
             }
             // start recording to file url
             movieOutput?.startRecordingToOutputFileURL(curFileURL, recordingDelegate: self)
-
-            // change button and state
-            startStopButton.setTitle("Stop Song", forState: UIControlState.Normal)
-            isRecording = true
         }
     }
     
@@ -234,10 +248,11 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     func stopRecording() {
         // change button and state
         startStopButton.setImage(UIImage(named: "Record_Inactive"), forState: UIControlState.Normal)
-        isRecording = false
         shouldSave = false
+        audioPlayer?.stop()
         movieOutput?.stopRecording()
         session.stopRunning()
+        popToDetailController()
     }
     
     // MARK: Core Data
@@ -342,19 +357,19 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         if recordSuccess {
             
             // delete file if recording was interrupted
-//            if shouldSave {
+            if shouldSave {
                 println("File was saved succesfully")
                 writeToCore()
-//            } else {
-//                // delete the file that was saved
-//                let fileManager = NSFileManager.defaultManager()
-//                if fileManager.fileExistsAtPath(curFilePath!) {
-//                    var err:NSError?
-//                    if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
-//                        println("Error removing disrupted file")
-//                    }
-//                }
-//            }
+            } else {
+                // delete the file that was saved
+                let fileManager = NSFileManager.defaultManager()
+                if fileManager.fileExistsAtPath(curFilePath!) {
+                    var err:NSError?
+                    if !fileManager.removeItemAtPath(curFilePath!, error: &err) {
+                        println("Error removing disrupted file")
+                    }
+                }
+            }
         }
     }
     
@@ -385,12 +400,6 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
         KaraokeText.textAlignment = NSTextAlignment.Center
     }
     
-    @IBAction func popToDetail(){
-        
-        
-        //customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
-        
-    }
     
     /*
     // MARK: - Navigation
