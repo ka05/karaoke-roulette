@@ -28,6 +28,11 @@ class SongsDetailVC: UIViewController {
         //customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "KaraokeVC")
     }
     
+    @IBAction func goBack(segue: UIStoryboardSegue){
+//        var sourceVC = segue.sourceViewController
+        
+    }
+    
     // MARK: - viewDidLoad-willAppear
     
     override func viewDidLoad() {

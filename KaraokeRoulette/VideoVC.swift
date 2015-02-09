@@ -41,6 +41,11 @@ class VideoVC: UIViewController {
         
     }
     
+    @IBAction func popOut(){
+        customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "ProfileVC")
+        
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -41,6 +41,8 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     @IBOutlet weak var KaraokeText: UITextView!
     @IBOutlet weak var startStopButton: UIButton!
     
+//    @IBOutlet weak var sourceVC: UIViewController!
+    
     @IBAction func startSong(sender: AnyObject) {
         if !isRecording {
             startCountdown()
@@ -105,8 +107,9 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     }
     
     func popToDetailController() {
-        let vc = ProfileVC()
-        self.presentViewController(vc, animated: true, completion: nil)
+//        let vc = ProfileVC()
+//        self.presentViewController(vc, animated: true, completion: nil)
+        //customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "ProfileVC")
     }
     
     // MARK: Timing
@@ -405,7 +408,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     }
     
     @IBAction func popOut(){
-        //customNavigateFromSourceViewController(sourceVC, toDestinationViewControllerWithIdentifier: "SongsTableVC")
+        customNavigateFromSourceViewController(self, toDestinationViewControllerWithIdentifier: "ProfileVC")
         
     }
     
