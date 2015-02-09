@@ -206,7 +206,7 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     
     // starts recording to the documents directory
     func startRecording() {
-        startStopButton.setBackgroundImage(UIImage(named: "Record"), forState: UIControlState.Normal)
+        startStopButton.setImage(UIImage(named: "Record"), forState: UIControlState.Normal)
         if videoDevice != nil && audioDevice != nil {
             videoID = getRandID()
             curFilePath = createDocPath(videoID) + ".mov"
@@ -232,12 +232,11 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     // stops the recording
     func stopRecording() {
         // change button and state
-        startStopButton.setBackgroundImage(UIImage(named: "Record_Inactive"), forState: UIControlState.Normal)
+        startStopButton.setImage(UIImage(named: "Record_Inactive"), forState: UIControlState.Normal)
         isRecording = false
         shouldSave = false
         movieOutput?.stopRecording()
         session.stopRunning()
-        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: Core Data
