@@ -449,7 +449,7 @@ class ProfileVC: UIViewController, UINavigationControllerDelegate, UIImagePicker
         
         if segue.identifier == "videoSegue" {
             let vc = segue.destinationViewController as VideoVC
-            //vc.video = video
+            vc.video = video
         }
     }
     
