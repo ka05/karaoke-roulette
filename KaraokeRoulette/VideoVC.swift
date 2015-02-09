@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class VideoVC: UIViewController {
     
-    var video:[Video] = [Video]()
+    var video:Video?
+    var player:MPMoviePlayerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        startPlayingVideo()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        player.stop()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -25,20 +32,15 @@ class VideoVC: UIViewController {
     
     
     func startPlayingVideo(){
-        // get video from documents dir
-        //let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as NSString + "/filename"
-//        var url:NSURL = NSURL(string: "http://jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v")
-//        
-//        moviePlayer = MPMoviePlayerController(contentURL: url)
-//        
-//        moviePlayer.view.frame = CGRect(x: 20, y: 100, width: 200, height: 150)
-//        
-//        self.view.addSubview(moviePlayer.view)
-//        
-//        moviePlayer.fullscreen = true
-//        
-//        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
-        
+        let path = video?.videoPath
+        let url = NSURL.fileURLWithPath(path!)
+        player = MPMoviePlayerController(contentURL: url)
+        player.view.frame = self.view.bounds
+        player.prepareToPlay()
+        player.scalingMode = .AspectFill
+        self.view.addSubview(player.view)
+        self.view.bringSubviewToFront(player.view)
+        player.play()
     }
     
     @IBAction func popOut(){
