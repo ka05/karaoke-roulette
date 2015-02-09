@@ -50,6 +50,9 @@ class KaraokeVC: UIViewController, AVCaptureFileOutputRecordingDelegate, AVAudio
     }
     
     @IBAction func popToDetail(){
+        if isRecording {
+            stopRecording()
+        }
         popToDetailController()
     }
     
